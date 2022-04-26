@@ -97,7 +97,7 @@ CREATE TABLE TextResponses(
   sId INT,
   questionPosition INT,
   answer VARCHAR(256),
-  PRIMARY KEY(eId, sId, position),
+  PRIMARY KEY(eId, sId, questionPosition),
   FOREIGN KEY(eId) REFERENCES Experiences(id),
   FOREIGN KEY(sId) REFERENCES Surveys(id),
   FOREIGN KEY(questionPosition) REFERENCES Questions(position)
