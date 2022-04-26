@@ -1,3 +1,7 @@
+--BUILDS TABLES FOR ONET
+--CSC366
+--GROUP MID ALPHABET
+
 CREATE TABLE Accounts(
     username varchar(45),
     hashedPasssword varchar(32),
