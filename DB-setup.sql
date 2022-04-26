@@ -85,7 +85,7 @@ CREATE TABLE OptionResponses(
   sId INT,
   questionPosition INT,
   optionPosition INT,
-  PRIMARY KEY(eId, sId, position),
+  PRIMARY KEY(eId, sId, questionPosition, optionPosition),
   FOREIGN KEY(eId) REFERENCES Experiences(id),
   FOREIGN KEY(sId) REFERENCES Surveys(id),
   FOREIGN KEY(questionPosition) REFERENCES Questions(position),
@@ -95,10 +95,10 @@ CREATE TABLE OptionResponses(
 CREATE TABLE TextResponses(
   eId INT,
   sId INT,
-  position INT,
+  questionPosition INT,
   answer VARCHAR(256),
   PRIMARY KEY(eId, sId, position),
   FOREIGN KEY(eId) REFERENCES Experiences(id),
   FOREIGN KEY(sId) REFERENCES Surveys(id),
-  FOREIGN KEY(position) REFERENCES Questions(position)
+  FOREIGN KEY(questionPosition) REFERENCES Questions(position)
 )
