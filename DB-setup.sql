@@ -2,7 +2,8 @@ CREATE TABLE Accounts(
     username varchar(45),
     hashedPasssword varchar(32),
     email varchar(100),
-    Primary Key(username)
+    Primary Key(username),
+    UNIQUE (email)
 )
 
 CREATE TABLE Profile(
@@ -10,7 +11,7 @@ CREATE TABLE Profile(
     dateCreated date,
     metadata varchar(20),
     experienceID int,
-    profileType varchar(),
+    profileType varchar(), --REAL OR DESIRED
     Primary Key (profileId),
     Foreign Key(experienceId) references Experiences(id)
 )
@@ -22,10 +23,31 @@ CREATE TABLE Profile(
 --     Foreign Key(experienceId) references ...
 -- )
 
+
+
 CREATE TABLE ValueCharacteristics(
     id int AUTO_INCREMENT,
     name varchar(40),
     description varchar(512)
+)
+
+CREATE TABLE RealValues(
+  vcId int,
+  profileId int,
+  realValue int,
+  Primary Key(vcId, profileID),
+  Foreign Key(vcId) references ValueCharacteristics(id),
+  Foreign Key(profileID) references Profile(profileID)
+)
+
+CREATE TABLE DesiredValue(
+  vcId int,
+  profileId int,
+  importance int,
+  desiredValue int,
+  Primary Key(vcId, profileID),
+  Foreign Key(vcId) references ValueCharacteristics(id),
+  Foreign Key(profileID) references Profile(profileID)
 )
 
 CREATE TABLE ONetJobs(
@@ -41,7 +63,7 @@ CREATE TABLE ONetJobs(
 CREATE TABLE JobProfileValues(
     jobId int,
     vcId varchar(40),
-    value int,
+    jobProfileValue int,
     Primary Key(jobId),
     Foreign Key(jobId) references ONetJobs(jobId),
     Foreign Key(vcId) references ValueCharacteristics(id)
