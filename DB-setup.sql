@@ -83,15 +83,16 @@ CREATE TABLE Experiences(
 CREATE TABLE OptionResponses(
   eId INT,
   sId INT,
-  position INT,
-  answer INT,
+  questionPosition INT,
+  optionPosition INT,
   PRIMARY KEY(eId, sId, position),
   FOREIGN KEY(eId) REFERENCES Experiences(id),
   FOREIGN KEY(sId) REFERENCES Surveys(id),
-  FOREIGN KEY(position) REFERENCES Questions(position)
+  FOREIGN KEY(questionPosition) REFERENCES Questions(position),
+  FOREIGN KEY(optionPosition) REFERENCES AnswerOptions(position)
 )
 
-CREATE TABLE TypedResponses(
+CREATE TABLE TextResponses(
   eId INT,
   sId INT,
   position INT,
