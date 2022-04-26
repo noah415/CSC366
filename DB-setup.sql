@@ -6,6 +6,14 @@ CREATE TABLE Accounts(
     UNIQUE (email)
 )
 
+CREATE TABLE Experiences(
+  id INT AUTO_INCREMENT,
+  username VARCHAR(45),
+  sId INT,
+  PRIMARY KEY(id),
+  FOREIGN KEY(username) REFERENCES Accounts(username)
+)
+
 CREATE TABLE Profile(
     profileId int AUTO_INCREMENT,
     dateCreated date,
@@ -16,14 +24,14 @@ CREATE TABLE Profile(
     Foreign Key(experienceId) references Experiences(id)
 )
 
--- CREATE TABLE RealProfile(
---     profileId int,
---     experienceId int,
---     Primary Key(profileId),
---     Foreign Key(experienceId) references ...
--- )
-
-
+CREATE TABLE ONetJobs(
+    jobId int AUTO_INCREMENT,
+    jobTitle varchar(60),
+    field varchar(40),
+    description varchar(400),
+    Primary Key(jobId),
+    Unique(jobTitle, field)
+)
 
 CREATE TABLE ValueCharacteristics(
     id int AUTO_INCREMENT,
@@ -50,16 +58,6 @@ CREATE TABLE DesiredValue(
   Foreign Key(profileID) references Profile(profileID)
 )
 
-CREATE TABLE ONetJobs(
-    jobId int AUTO_INCREMENT,
-    jobTitle varchar(60),
-    field varchar(40),
-    description varchar(400),
-    Primary Key(jobId),
-    Unique(jobTitle, field)
-)
-
-
 CREATE TABLE JobProfileValues(
     jobId int,
     vcId varchar(40),
@@ -75,6 +73,7 @@ CREATE TABLE Surveys(
   type VARCHAR(64),
   PRIMARY KEY(id),
 )
+
 
 CREATE TABLE Questions(
   sId INT,
@@ -94,13 +93,6 @@ CREATE TABLE AnswerOptions(
   FOREIGN KEY(qPosition) REFERENCES Questions(position)
 )
 
-CREATE TABLE Experiences(
-  id INT AUTO_INCREMENT,
-  username VARCHAR(45),
-  sId INT,
-  PRIMARY KEY(id),
-  FOREIGN KEY(username) REFERENCES Accounts(username)
-)
 
 CREATE TABLE OptionResponses(
   eId INT,
