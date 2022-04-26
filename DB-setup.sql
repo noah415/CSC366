@@ -8,22 +8,27 @@ CREATE TABLE Surveys(
 CREATE TABLE Questions(
   sId INT,
   position INT,
-  prompt VARCHAR(256),
+  prompt VARCHAR(512),
   PRIMARY KEY(sId, position),
-  FOREIGN KEY(sId)
+  FOREIGN KEY(sId) REFERENCES Surveys(id)
 )
 
 CREATE TABLE AnswerOptions(
   sId INT,
+  qPosition INT,
   position INT,
-  optionValue VARCHAR(256),
-  PRIMARY KEY(sId, position),
-  FOREIGN KEY(sId)
+  optionValue VARCHAR(512),
+  PRIMARY KEY(sId, qPosition, position),
+  FOREIGN KEY(sId) REfERENCES Surveys(id),
+  FOREIGN KEY(qPosition) REFERENCES Questions(position)
 )
 
 CREATE TABLE Experiences(
   id INT AUTO_INCREMENT,
-  PRIMARY KEY(id)
+  username VARCHAR(45),
+  sId INT,
+  PRIMARY KEY(id),
+  FOREIGN KEY(username) REFERENCES Accounts(username)
 )
 
 CREATE TABLE OptionResponses(
