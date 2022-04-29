@@ -71,6 +71,16 @@ CREATE TABLE JobProfileValues(
     Foreign Key(vcId) references ValueCharacteristics(id)
 )
 
+CREATE TABLE matches(
+  jobProfileId int,
+  profileId int,
+  DateMatched date,
+  MatchSimiliarity decimal(10, 5)
+  Primary Key(jobProfileId, profileID),
+  Foreign Key(jobProfileId) references ONETJobs(id),
+  Foreign Key(profileID) references Profile(profileID)
+)
+
 CREATE TABLE Surveys(
   id INT AUTO_INCREMENT,
   name VARCHAR(64),
