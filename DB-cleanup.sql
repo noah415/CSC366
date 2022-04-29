@@ -11,6 +11,8 @@ DROP TABLE Questions;
 
 DROP TABLE Surveys;
 
+DROP TABLE matches;
+
 DROP TABLE JobProfileValues;
 
 DROP TABLE DesiredValue;
