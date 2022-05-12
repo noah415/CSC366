@@ -3,14 +3,12 @@ import math
 from datetime import datetime
 
 FILENAMES = [
-"Rooms.csv",
-"Reservations.csv"
+"SurveyQuestions.csv"
 ]
 TABLENAMES = [
-"Rooms",
-"Reservations"
+"Questions"
 ]
-DATASET = "INN"
+DATASET = "group4a"
 
 TEST_STRING = ""
 CLEANUP_STRING = ""
@@ -22,10 +20,7 @@ for i in range(len(FILENAMES)):
   df_list = pd.read_csv(FILENAME)
   to_insert = ""
   for x in df_list:
-    if not "Wine" == TABLENAME:
-      to_insert += ''.join(ch for ch in x if ch.isalnum()) + ", "
-    else:
-      if x != "State" and x != "Drink":
+    if x != "State" and x != "Drink":
         to_insert += x + ", "
   to_insert = to_insert[:-2]
 
