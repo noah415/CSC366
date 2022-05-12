@@ -3,19 +3,28 @@
 --GROUP MID ALPHABET
 
 CREATE TABLE Accounts(
-    username varchar(45),
-    hashedPasssword varchar(32),
+    id int,
+    name varchar(45),
     email varchar(100),
-    Primary Key(username),
+    hashedPasssword varchar(32),
+    Primary Key(id),
     UNIQUE (email)
+)
+
+CREATE TABLE Surveys(
+  id INT AUTO_INCREMENT,
+  name VARCHAR(64),
+  type VARCHAR(64),
+  PRIMARY KEY(id)
 )
 
 CREATE TABLE Experiences(
   id INT AUTO_INCREMENT,
-  username VARCHAR(45),
+  accountId,
   sId INT,
   PRIMARY KEY(id),
-  FOREIGN KEY(username) REFERENCES Accounts(username)
+  FOREIGN KEY(accountId) REFERENCES Accounts(id),
+  FOREIGN KEY(sId) REFERENCES Surveys(id)
 )
 
 CREATE TABLE Profile(
@@ -71,7 +80,7 @@ CREATE TABLE JobProfileValues(
     Foreign Key(vcId) references ValueCharacteristics(id)
 )
 
-CREATE TABLE matches(
+CREATE TABLE Matches(
   jobProfileId int,
   profileId int,
   DateMatched date,
@@ -79,13 +88,6 @@ CREATE TABLE matches(
   Primary Key(jobProfileId, profileID),
   Foreign Key(jobProfileId) references ONETJobs(id),
   Foreign Key(profileID) references Profile(profileID)
-)
-
-CREATE TABLE Surveys(
-  id INT AUTO_INCREMENT,
-  name VARCHAR(64),
-  type VARCHAR(64),
-  PRIMARY KEY(id),
 )
 
 
