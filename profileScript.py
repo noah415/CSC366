@@ -12,9 +12,7 @@ def handleFile(argv):
     w = open(argv[2], "w")
 
     for i in range(numlines):
-        sqlInput = "INSERT INTO Profile (dateCreated, metadata, experienceID, profileType) values('2022-05-05','test metadata'," + str(i) + ",'Real')"
-        sqlInput = sqlInput[:len(sqlInput) - 3]
-        sqlInput += "');\n"
+        sqlInput = "INSERT INTO Experiences (accountId, sId) values("+str(i)+",1);\n"
         w.write(sqlInput)
     
     w.close()
