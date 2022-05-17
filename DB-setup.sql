@@ -47,25 +47,25 @@ CREATE TABLE Surveys(
    type VARCHAR(64),
    PRIMARY KEY(id)
 );
-      
-CREATE TABLE Experiences(
-   id INT NOT NULL AUTO_INCREMENT,
-   dateTaken date,
-   accountId INT,
-   sId INT NOT NULL,
-   PRIMARY KEY(id),
-   FOREIGN KEY(accountId) REFERENCES Accounts(id),
-   FOREIGN KEY(sId) REFERENCES Surveys(id)
-);
           
 CREATE TABLE Profile(
    profileId int NOT NULL AUTO_INCREMENT,
    dateCreated date,
-   metadata varchar(20),
-   experienceID int,
+   name varchar(20),
+   accountID int,
    profileType varchar(10),
    Primary Key (profileId),
-   Foreign Key(experienceId) references Experiences(id)
+   Foreign Key(accountId) references Accounts(id)
+);
+
+CREATE TABLE Experiences(
+   id INT NOT NULL AUTO_INCREMENT,
+   dateTaken date,
+   profileId INT,
+   sId INT NOT NULL,
+   PRIMARY KEY(id),
+   FOREIGN KEY(profileId) REFERENCES Profile(id),
+   FOREIGN KEY(sId) REFERENCES Surveys(id)
 );
               
 CREATE TABLE ONetJobs(
