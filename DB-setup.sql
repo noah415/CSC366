@@ -49,6 +49,7 @@ CREATE TABLE Accounts(
   CREATE TABLE ValueCharacteristics(
       name varchar(40),
       description varchar(512),
+      type varchar(100),
       Primary Key (name)
   );
   
