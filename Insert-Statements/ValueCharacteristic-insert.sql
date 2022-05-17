@@ -1,0 +1,28 @@
+INSERT INTO ValueCharacteristics values('Work Scheduling Autonomy',' Work scheduling autonomy means that you are able to determine when you complete your work tasks without having to check in with a supervisor or coworkers','Task Characteristics');
+INSERT INTO ValueCharacteristics values('Decision Making Autonomy',' Decision making autonomy means that you are able to make decisions about various aspects of your work without having to check in with a supervisor or coworkers.','Task Characteristics');
+INSERT INTO ValueCharacteristics values('Work Methods Autonomy',' Work methods autonomy means that you are able to choose the approach and methods you use for your work without having to check in with a supervisor or coworker.','Task Characteristics');
+INSERT INTO ValueCharacteristics values('Task Variety',' Task variety means that the work you do involves a lot of different kinds tasks and activities with relatively little time spent doing the same things over and over.','Task Characteristics');
+INSERT INTO ValueCharacteristics values('Task Significance','Task significance means that the work that you do has – or can have – an important direct or indirect impact on the lives of other people.','Task Characteristics');
+INSERT INTO ValueCharacteristics values('Task Identity',' Task identity means that your work has an identifiable stating point and ending point so you know when you’ve ‘finished’ something.','Task Characteristics');
+INSERT INTO ValueCharacteristics values('Feedback from Job','Feedback from the job means that your work provides you with clear information relating to the quality and quantity of your job performance.','Task Characteristics');
+
+INSERT INTO ValueCharacteristics values('Job Complexity','Job complexity means that your job requires you to work on multiple often complicated tasks simultaneously.','Knowledge Characteristics');
+INSERT INTO ValueCharacteristics values('Information Processing','Information processing means that your job requires you to keep track of and analyze a large amount of information in order to complete your work.','Knowledge Characteristics');
+INSERT INTO ValueCharacteristics values('Problem Solving','Problem solving means that your job requires you be creative in finding solutions to problems with no conspicuous or obvious answer.','Knowledge Characteristics');
+INSERT INTO ValueCharacteristics values('Skill Variety',' Skill variety means that your job requires you to use a range of different or high-level skills to complete your work tasks.','Knowledge Characteristics');
+INSERT INTO ValueCharacteristics values('Specialization',' Specialization means that your job requires you to have well-developed knowledge and a focused set of skills in order to complete your work.','Knowledge Characteristics');
+
+INSERT INTO ValueCharacteristics values('Social Support','Social support means that your job provides you with the opportunity to develop meaningful personal connections with your coworkers.','Social characteristics');
+INSERT INTO ValueCharacteristics values('Initiated Interdependence','Initiated interdependence means that for others to complete their work depends on you getting your work done first.','Social characteristics');
+INSERT INTO ValueCharacteristics values('Received Interdependence','Received interdependence means that in order for you to complete your work that others must complete their work first.','Social characteristics');
+INSERT INTO ValueCharacteristics values('Interaction Outside Research Group',' Interaction outside the research group means that your job requires you to have frequent interactions and communication with people outside of your team or group in order to complete your work.','Social characteristics');
+INSERT INTO ValueCharacteristics values('Feedback from Others','Feedback from others means that while on the job coworkers and supervisors provide you with useful information about your work performance.','Social characteristics');
+INSERT INTO ValueCharacteristics values('Faculty leader feedback','Faculty/project leader feedback means that your faculty/project leader provides you with useful information about your work performance.','Social characteristics');
+INSERT INTO ValueCharacteristics values('Peer Feedback','Peer feedback means that while on the job your peers provide you with useful information about your work performance.','Social characteristics');
+
+INSERT INTO ValueCharacteristics values('Ergonomics','Ergonomics means that the physical configuration of your work space is generally comfortable can accommodate a range of different body types and doesn’t contribute to physical strain or discomfort.','Work Context');
+INSERT INTO ValueCharacteristics values('Physical Demands','Physical demands means that while on the job a great deal of physical effort is necessary to complete your work tasks.','Work Context');
+INSERT INTO ValueCharacteristics values('Work Conditions','Work conditions means that the physical setting where you do your job tasks is generally free from uncomfortable or dangerous conditions.','Work Context');
+INSERT INTO ValueCharacteristics values('Equipment Use','Equipment use means that while on the job your work requires you to use a number of different kinds of equipment to complete your work tasks.','Work Context');
+INSERT INTO ValueCharacteristics values('Setting','Work setting can vary in regards to how time is spent between the laboratory (working with reagents and equipment) + computers (working with files) + fieldwork (collecting samples or making observations in the natural environment) and working with people (teaching',' sales',' management work).','Work Context');
+
