@@ -47,10 +47,9 @@ CREATE TABLE Accounts(
   );
   
   CREATE TABLE ValueCharacteristics(
-      id int NOT NULL AUTO_INCREMENT,
       name varchar(40),
       description varchar(512),
-      Primary Key (id)
+      Primary Key (name)
   );
   
   CREATE TABLE RealValues(
@@ -95,8 +94,10 @@ CREATE TABLE Questions(
    sId INT NOT NULL,
    position INT NOT NULL,
    prompt VARCHAR(512),
+   valueCharachteristic varchar(100),
    PRIMARY KEY(sId, position),
-   FOREIGN KEY(sId) REFERENCES Surveys(id)
+   FOREIGN KEY(sId) REFERENCES Surveys(id),
+   FOREIGN KEY(valueCharachteristic) REFERENCES ValueCharacteristics(name)
  );
  
  CREATE TABLE AnswerOptions(
