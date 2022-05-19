@@ -88,7 +88,7 @@ CREATE TABLE ValueCharacteristics(
 CREATE TABLE RealValues(
    vcId varchar(40),
    profileId int NOT NULL,
-   realValue int,
+   realValue float,
    Primary Key(vcId, profileID),
    Foreign Key(vcId) references ValueCharacteristics(name),
    Foreign Key(profileID) references Profile(profileId)
