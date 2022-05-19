@@ -12,7 +12,7 @@ def writeURE(infile, sId, outfileopt, outfiletext):
           str(data[0]) + ',' + str(sId) + ',' + str(questionPos) + ',' + str(responses[i]) + ');\n')
       elif 5 < i < 11: 
         outfiletext.write("INSERT INTO TextResponses (eId, sId, questionPosition, answer) VALUES (" + 
-          str(data[0]) + ',' + str(sId) + ',' + str(questionPos) + ',' + str(responses[i]) + ');\n')
+          str(data[0]) + ',' + str(sId) + ',' + str(questionPos) + ',\'' + str(responses[i]) + '\');\n')
       else:
         outfileopt.write("INSERT INTO OptionResponses (eId, sId, questionPosition, optionPosition) VALUES (" + 
           str(data[0]) + ',' + str(sId) + ',' + str(questionPos) + ',' + str(responses[i]) + ');\n')
@@ -29,7 +29,7 @@ def writeProf(infile, sId, outfileopt, outfiletext):
         str(data[0]) + ',' + str(sId) + ',' + str(questionPos) + ',' + str(responses[i]) + ');\n')
       elif i == 2: 
         outfiletext.write("INSERT INTO TextResponses (eId, sId, questionPosition, answer) VALUES (" + 
-        str(data[0]) + ',' + str(sId) + ',' + str(questionPos) + ',' + str(responses[i]) + ');\n')
+        str(data[0]) + ',' + str(sId) + ',' + str(questionPos) + ',\'' + str(responses[i]) + '\');\n')
       else:
         outfileopt.write("INSERT INTO OptionResponses (eId, sId, questionPosition, optionPosition) VALUES (" + 
         str(data[0]) + ',' + str(sId) + ',' + str(questionPos) + ',' + str(responses[i]) + ');\n')
