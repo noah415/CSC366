@@ -92,12 +92,12 @@ INSERT INTO Questions values(1, 91, "The research position occurs in a clean env
 INSERT INTO Questions values(1, 92, "The research position involves the use of a variety of different equipment.", 1, "equipment use");
 INSERT INTO Questions values(1, 93, "The research position involves the use of complex equipment or technology.", 1, "equipment use");
 INSERT INTO Questions values(1, 94, "A lot of time was required to learn the equipment used in the research position.", 1, "equipment use");
-INSERT INTO Questions values(2, 1, "What type of organization do you work in?", 0, NULL);
-INSERT INTO Questions values(2, 2, "Which of degrees did you earn and what year did you earn them in (fill all that apply)", 0, NULL);
-INSERT INTO Questions values(2, 3, "In which year did you work at the position for which you are answering the survey?", 0, NULL);
-INSERT INTO Questions values(2, 4, "How do you spend your time in this job (fieldwork)?", 0, NULL);
-INSERT INTO Questions values(2, 5, "How do you spend your time in this job (lab work)?", 0, NULL);
-INSERT INTO Questions values(2, 6, "How do you spend your time in this job (computer work)?", 0, NULL);
+INSERT INTO Questions values(2, 1, "What type of organization do you work in?", 0, 'General');
+INSERT INTO Questions values(2, 2, "Which of degrees did you earn and what year did you earn them in (fill all that apply)", 0, 'General');
+INSERT INTO Questions values(2, 3, "In which year did you work at the position for which you are answering the survey?", 0, 'General');
+INSERT INTO Questions values(2, 4, "How do you spend your time in this job (fieldwork)?", 0, 'General');
+INSERT INTO Questions values(2, 5, "How do you spend your time in this job (lab work)?", 0, 'General');
+INSERT INTO Questions values(2, 6, "How do you spend your time in this job (computer work)?", 0, 'General');
 INSERT INTO Questions values(2, 7, "The job allows me to make my own decisions about how to schedule my work.", 1, "work scheduling autonomy");
 INSERT INTO Questions values(2, 8, "The job allows me to decide on the order in which things are done.", 1, "work scheduling autonomy");
 INSERT INTO Questions values(2, 9, "The job allows me to plan how I do my work.", 1, "work scheduling autonomy");
