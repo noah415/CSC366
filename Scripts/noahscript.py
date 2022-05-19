@@ -38,8 +38,8 @@ def main():
   argv = sys.argv
 
   input_file = argv[1]
-  output_fileopt = 'Insert-Statements/OptionResponses-insert.sql'
-  output_filetext = 'Insert-Statements/TextResponses-insert.sql'
+  output_fileopt = '../Insert-Statements/OptionResponses-insert.sql'
+  output_filetext = '../Insert-Statements/TextResponses-insert.sql'
   sId = argv[2]
   surveyType = argv[3]
   print(argv)

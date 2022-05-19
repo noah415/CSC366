@@ -1,7 +1,7 @@
 import sys
 
 def main():
-  file = open('Insert-Statements/AnswerOptions-insert.sql', 'a')
+  file = open('../Insert-Statements/AnswerOptions-insert.sql', 'a')
   UREsId = 1
   ProsId = 2
 
