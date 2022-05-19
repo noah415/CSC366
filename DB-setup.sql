@@ -97,8 +97,8 @@ CREATE TABLE RealValues(
 CREATE TABLE DesiredValue(
    vcId varchar(40),
    profileId int NOT NULL,
-   importance int,
    desiredValue int,
+   importance int,
    Primary Key(vcId, profileID),
    Foreign Key(vcId) references ValueCharacteristics(name),
    Foreign Key(profileID) references Profile(profileId)
