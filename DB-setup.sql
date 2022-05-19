@@ -27,7 +27,7 @@ DROP TABLE AnswerOptions;
     DROP TABLE Accounts;
 
 CREATE TABLE Accounts(
-      id int,
+      id INT NOT NULL AUTO_INCREMENT,
       role varchar(40),
             name varchar(45),
                   email varchar(100),
@@ -122,6 +122,7 @@ CREATE TABLE Accounts(
 
                                 CREATE TABLE Questions(
                                    sId INT NOT NULL,
+                                   questionType varchar(50),
                                       position INT NOT NULL,
                                          prompt VARCHAR(512),
                                             valueCharachteristic varchar(100),
