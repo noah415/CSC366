@@ -24,5 +24,5 @@ INSERT INTO ValueCharacteristics values('Ergonomics','Ergonomics means that the 
 INSERT INTO ValueCharacteristics values('Physical Demands','Physical demands means that while on the job a great deal of physical effort is necessary to complete your work tasks.','Work Context');
 INSERT INTO ValueCharacteristics values('Work Conditions','Work conditions means that the physical setting where you do your job tasks is generally free from uncomfortable or dangerous conditions.','Work Context');
 INSERT INTO ValueCharacteristics values('Equipment Use','Equipment use means that while on the job your work requires you to use a number of different kinds of equipment to complete your work tasks.','Work Context');
-INSERT INTO ValueCharacteristics values('Setting','Work setting can vary in regards to how time is spent between the laboratory (working with reagents and equipment) + computers (working with files) + fieldwork (collecting samples or making observations in the natural environment) and working with people (teaching',' sales',' management work).','Work Context');
-
+INSERT INTO ValueCharacteristics values('Setting','Work setting can vary in regards to how time is spent between the laboratory (working with reagents and equipment) + computers (working with files) + fieldwork (collecting samples or making observations in the natural environment) and working with people (teaching or sales or management work).','Work Context');
+INSERT INTO ValueCharacteristics values ('General', 'Questions not connected to a ValueCharacteristic', 'Both');
