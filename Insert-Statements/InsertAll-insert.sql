@@ -1,0 +1,14 @@
+source ../DB-setup.sql;
+source Accounts-insert.sql;
+source Surveys-insert.sql;
+source RealProfile-insert.sql;
+source DesiredProfile-insert.sql;
+source Experiences-insert.sql;
+source ONETJobs-insert.sql;
+source ValueCharacteristic-insert.sql;
+source RealValues-insert.sql;
+source DesiredValue-insert.sql;
+source Questions-insert.sql;
+source AnswerOptions-insert.sql;
+source TestResponses-insert.sql;
+source OptionResponses-insert.sql;
