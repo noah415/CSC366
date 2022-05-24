@@ -1,0 +1,149 @@
+.form {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 2%;
+}
+
+.CPC {
+  font-size: 2em;
+  display: flex;
+  padding-left: 5%;
+  padding-bottom: 1%;
+}
+
+.columnLabels {
+  font-size: 1.5em;
+  display: flex;
+  padding-left: 10%;
+  padding-bottom: 1%;
+}
+
+.pTitle {
+  background-color: #5480d4;
+  font-size: 2.5em;
+  margin-bottom: 1%;
+  color: #e7e7e7;
+  padding-left: 1%;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.212);
+  transform-origin: top;
+  transition: box-shadow 0.7s, transform 0.7s;
+}
+
+.pType {
+  background-color: #5480d4;
+  font-size: 1.5em;
+  margin-bottom: 1%;
+  color: #e7e7e7;
+  padding-left: 1%;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.212);
+  transform-origin: top;
+  transition: box-shadow 0.7s, transform 0.7s;
+}
+
+.pDescription {
+  display: flex;
+  background-color: #5480d4;
+  font-size: 1.5em;
+  margin-bottom: 5%;
+  color: #e7e7e7;
+  padding-left: 1%;
+  height: 20vh;
+  align-items: flex-start;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.212);
+  transform-origin: top;
+  transition: box-shadow 0.7s, transform 0.7s;
+}
+
+input::placeholder {
+  color: darkgray;
+}
+
+.selectionArea {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 70vh;
+  overflow-y: scroll;
+  margin-bottom: 5%;
+}
+
+.cardOption {
+  display: flex;
+  background-color: #e7e7e7;
+  justify-content: space-between;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.212);
+  transform-origin: top;
+  transition: box-shadow 0.7s, transform 0.7s;
+  border-radius: 25px;
+  margin: 5%;
+  margin-left: 10%;
+  padding: 2%;
+}
+
+.cardSelected {
+  display: flex;
+  background-color: #5480d4;
+  justify-content: space-between;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.212);
+  transform-origin: top;
+  transition: box-shadow 0.7s, transform 0.7s;
+  border-radius: 25px;
+  margin: 5%;
+  margin-left: 10%;
+  padding: 2%;
+}
+
+.cardInfoSelected {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.cardInfoOption {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.cardTitle {
+  display: flex;
+  font-size: larger;
+  font-weight: 600;
+  justify-content: flex-start;
+}
+
+.cardType {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.rightSide {
+  width: 50%;
+}
+
+.leftSide {
+  width: 50%;
+}
+
+.bottomButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 5%;
+}
+
+.button {
+  background-color: #5480d4;
+  width: 30vh;
+  height: 6vh;
+  font-size: large;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.212);
+  transform-origin: top;
+  transition: box-shadow 0.7s, transform 0.7s;
+  border-radius: 25px;
+}

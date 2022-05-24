@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from "./components/NavBar/navBar";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ProfileTypePage from "./pages/ProfileType/createProfileType";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <ChakraProvider>
         <Router>
           <Routes>
+            {/* CHANGE ELEMENT AS IMPLEMENTED */}
             <Route exact path="/" element={<Navbar />} />
             <Route exact path="/surveys" element={<Navbar />} />
             <Route path="/profiles" element={<Navbar />} />
@@ -18,6 +20,7 @@ function App() {
             <Route path="/results" element={<Navbar />} />
             <Route path="/account" element={<Navbar />} />
             <Route path="/createSurvey" element={<Navbar />} />
+            <Route path="/createProfileType" element={<ProfileTypePage />} />
             <Route path="*" element={<p>404</p>} />
           </Routes>
         </Router>

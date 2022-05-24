@@ -60,15 +60,47 @@ export default function Navbar(props) {
           </Link>
         </Box>
       </HStack>
-      <Box mr={2}>
-        <Link as={ReactLink} _activeLink={{ fontWeight: "bold" }} to="/account">
-          {" "}
-          <Heading size="lg" color="white">
+      <HStack pr={10}>
+        <Box mr={2}>
+          <Link
+            as={ReactLink}
+            _activeLink={{ fontWeight: "bold" }}
+            to="/createProfileType"
+          >
             {" "}
-            Account{" "}
-          </Heading>{" "}
-        </Link>
-      </Box>
+            <Heading size="lg" color="white">
+              {" "}
+              Create Profile Type{" "}
+            </Heading>{" "}
+          </Link>
+        </Box>
+        <Box mr={2}>
+          <Link
+            as={ReactLink}
+            _activeLink={{ fontWeight: "bold" }}
+            to="/createSurvey"
+          >
+            {" "}
+            <Heading size="lg" color="white">
+              {" "}
+              Create Survey{" "}
+            </Heading>{" "}
+          </Link>
+        </Box>
+        <Box mr={2}>
+          <Link
+            as={ReactLink}
+            _activeLink={{ fontWeight: "bold" }}
+            to="/account"
+          >
+            {" "}
+            <Heading size="lg" color="white">
+              {" "}
+              Account{" "}
+            </Heading>{" "}
+          </Link>
+        </Box>
+      </HStack>
     </Flex>
   );
 }
