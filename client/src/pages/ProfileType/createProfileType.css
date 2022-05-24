@@ -120,6 +120,10 @@ input::placeholder {
   justify-content: flex-start;
 }
 
+.cardDescription {
+  text-align: left;
+}
+
 .rightSide {
   width: 50%;
 }

@@ -7,12 +7,12 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { IconButton } from "@material-ui/core";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate, Link } from "react-router-dom";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 const ProfileTypePage = () => {
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [remainingTypes, setRemainingTypes] = useState([]);
   const [formData, setFormData] = useState({});
-  const navigate = useNavigate();
 
   useEffect(() => {
     //Connect to backend to get all profileType options
@@ -31,7 +31,7 @@ const ProfileTypePage = () => {
         <div className="cardInfoSelected">
           <h className="cardTitle">{name}</h>
           <h className="cardType">{type}</h>
-          {/* <h className="cardDescription">{description}</h> */}
+          <h className="cardDescription">{description}</h>
         </div>
         {getDelete({ name, description, type })}
       </div>
@@ -44,7 +44,7 @@ const ProfileTypePage = () => {
         <div className="cardInfoOption">
           <h className="cardTitle">{name}</h>
           <h className="cardType">{type}</h>
-          {/* <h className="cardDescription">{description}</h>; */}
+          <h className="cardDescription">{description}</h>
         </div>
         {getAddition({ name, description, type })}
       </div>
@@ -52,9 +52,12 @@ const ProfileTypePage = () => {
   }
 
   const postProfileType = () => {
-    //onsole.log("Clicked");
+    //insert form Data into  sql attributes name and description where name is primary key
+    // Note THIS INSERT MUST HAPPEN BEFORE THE FOLLOWING
     console.log(formData);
     console.log(selectedTypes);
+
+    //for each selected type add to the ProfileValueConntections table the name of the profileType and the name of the profile characterisitc as foreign keys
     //navigate("/");
     //function to post formData
   };
@@ -135,14 +138,6 @@ const ProfileTypePage = () => {
           placeholder="Profile Type Name"
           name="name"
           value={formData.name}
-          onChange={handleChange}
-          required
-        />
-        <input
-          placeholder="Profile Type"
-          className="pType"
-          name="type"
-          value={formData.type}
           onChange={handleChange}
           required
         />
