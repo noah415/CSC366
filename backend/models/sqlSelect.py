@@ -9,24 +9,55 @@ config = {
 }
 
 cnx = mysql.connector.connect(**config)
-cursor = cnx.cursor()
+cursor = cnx.cursor(dictionary=True, buffered=True)
+
+def executeFetchAll(query):
+    cursor.execute(query)
+    result = cursor.fetchall()
+    return result
+
+
+def executeFetchOne(query):
+    cursor.execute(query)
+    result = cursor.fetchone()
+    return result
+
 
 #get all profiles
 def getAllProfiles():
-    profiles = []
     query = ("Select * from Profile")
+    executeFetchAll(query)
+    
+def getProfileById(profileId):
+    query =  ("""Select * from Profile 
+                Where ProfileId = %s""")
+    executeFetchOne(query)
 
-    cursor.execute(query)
-    for (profileId, dateCreated, name, accountID, profileType) in cursor:
-        profile = {
-                "profileId": profileId, 
-                "dateCreated": dateCreated,
-                "name": name,
-                "accountID": accountID,
-                "profileType": profileType}
-        profiles.append(profile)
-        print(profileId, dateCreated, name, accountID, profileType)
-    return profiles
+def getValueCharacteristics():
+    query =  ("Select * from ValueCharacteristics") 
+    executeFetchAll(query)
+
+#get profile Values
+def getRealValuesByProfile(profileId):
+    query =  ("""Select * from RealValues
+                Where ProfileId = %s""")
+
+    executeFetchAll(query)
+
+def getRealDesiredByProfile(profileId):
+    query =  ("""Select * from DesiredValues
+                Where ProfileId = %s""")
+
+    executeFetchAll(query)
+
+#experiences
+def getAllExperiences():
+    query = ("Select * from Profile")
+    executeFetchAll(query)
+
+def getExperienceByProfileId(profileId):
+    query = ("Select * from Profile")
+    executeFetchAll(query)
 
 
 cnx.close()
