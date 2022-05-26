@@ -15,6 +15,14 @@ def hello():
 def insert():
     table_name = request.args.get("tablename")
     insert_data = request.get_json()
+    result = jsonToSQL.select(table_name, insert_data)
+
+    if (result == None):
+        return result, 500
+    else:
+        return json.dumps(result), 200
+
+
 
 @app.route("/matches")
 def get_matches():

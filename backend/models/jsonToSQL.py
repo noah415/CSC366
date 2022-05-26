@@ -1,4 +1,5 @@
 from inspect import Attribute
+from select import select
 import mysql.connector
 
 config = {
@@ -24,6 +25,16 @@ def readJson(attributes, values, data):
     elif isinstance(values[i], int) or isinstance(values[i], float):
       values[i] = str(values[i])
 
+def execute(query):
+  try:
+    cursor.execute(query)
+    cnx.commit()
+    return True
+  except:
+    print("error executing query:",query)
+    return False
+
+
 def insert(table_name, insert_data):
   attributes = []
   values = []
@@ -32,8 +43,8 @@ def insert(table_name, insert_data):
 
   query = "Insert INTO {} ({}) values({})".format(table_name, ",".join(attributes), ",".join(values))
   print(query)
-  # cursor.execute(query)
-  # cnx.commit()
+  return execute(query)
+
 
 
 def delete(table_name, delete_data):
@@ -48,15 +59,32 @@ def delete(table_name, delete_data):
     conditions.append(condition)
 
   query = "DELETE FROM {} WHERE {}".format(table_name, " and ".join(conditions))
+
+  return(execute(query))
+
+
+def select(table_name, select_data):
+  attributes = []
+  values = []
+  conditions = []
+  data = None
+
+  readJson(attributes, values, select_data)
+  for i in range(len(attributes)):
+    condition = "{} = {}".format(attributes[i], values[i])
+    conditions.append(condition)
+
+  query = "SELECT * FROM {} WHERE {}".format(table_name, " and ".join(conditions))
   print(query)
 
-  # cursor.execute(query)
-  # cnx.commit()
+  if(execute(query)):
+    try:
+      data = cursor.fetchall()
+    except:
+      print("Failed to retrieve data")
+  return data
 
 dd = {
   "sId": 4,
   "Age": "pink"
 }
-
-delete("Surverys", dd)
-insert("Accounts", dd)
