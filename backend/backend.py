@@ -17,22 +17,23 @@ def hello():
 def insert():
     table_name = request.args.get("tablename")
     insert_data = request.get_json()
-    result = jsonToSQL.select(table_name, insert_data)
+    result = jsonToSQL.insert(table_name, insert_data)
 
     if (result == None):
         return result, 500
     else:
+        if table_name == 'Profiles':
+            insertMatches(table_name)
         return json.dumps(result), 200
 
 
-
-@app.route("/matches")
-def getMatches():
+@app.route("/matches/real")
+def getRealMatches():
     profileId = request.args.get("profileId", default = 0, type = int)
     profileValues = sqlSelect.getRealValuesByProfile(profileId)
     onetValues =  sqlSelect.getAllJobProfileValues()
     onetJobs =  sqlSelect.getAllONETJobs()
-    matches = matching.get_recommendations(profileValues, onetValues, onetJobs)
+    matches = json.dumps(matching.get_recommendations(profileValues, onetValues, onetJobs, 'real'), indent=4, sort_keys=True)
     return matches
 
 if __name__ == "__main__":
