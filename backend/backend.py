@@ -36,5 +36,9 @@ def getRealMatches():
     matches = json.dumps(matching.get_recommendations(profileValues, onetValues, onetJobs, 'real'), indent=4, sort_keys=True)
     return matches
 
+@app.route("/valueCharacteristics")
+def getVCs():
+    return json.dumps(sqlSelect.getValueCharacteristics())
+
 if __name__ == "__main__":
     app.run("localhost", 5000)
