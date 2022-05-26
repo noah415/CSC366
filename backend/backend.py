@@ -4,6 +4,7 @@ from flask_cors import CORS
 import json
 from models import sqlSelect
 from models import jsonToSQL
+from models import matching
 
 app = Flask(__name__)
 CORS(app)
@@ -26,10 +27,13 @@ def insert():
 
 
 @app.route("/matches")
-def get_matches():
+def getMatches():
     profileId = request.args.get("profileId", default = 0, type = int)
-    profiles = sqlSelect.getRealValuesByProfile(profileId)
-    return profiles
+    profileValues = sqlSelect.getRealValuesByProfile(profileId)
+    onetValues =  sqlSelect.getAllJobProfileValues()
+    onetJobs =  sqlSelect.getAllONETJobs()
+    matches = matching.get_recommendations(profileValues, onetValues, onetJobs)
+    return matches
 
 if __name__ == "__main__":
     app.run("localhost", 5000)
