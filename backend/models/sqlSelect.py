@@ -1,3 +1,4 @@
+from multiprocessing import parent_process
 import mysql.connector
 
 config = {
@@ -11,52 +12,57 @@ config = {
 cnx = mysql.connector.connect(**config)
 cursor = cnx.cursor(dictionary=True, buffered=True)
 
-def executeFetchAll(query):
+def executeFetchAll(query, parameters):
     cursor.execute(query)
     result = cursor.fetchall()
+    print(result)
     return result
 
 
-def executeFetchOne(query):
-    cursor.execute(query)
+def executeFetchOne(query, parameters):
+    cursor.execute(query, parameters)
     result = cursor.fetchone()
+    print(result)
     return result
 
 
 #get all profiles
 def getAllProfiles():
     query = ("Select * from Profile")
-    executeFetchAll(query)
+    executeFetchAll(query, [])
     
 def getProfileById(profileId):
     query =  ("""Select * from Profile 
                 Where ProfileId = %s""")
-    executeFetchOne(query)
+    executeFetchOne(query, [profileId])
 
 def getValueCharacteristics():
     query =  ("Select * from ValueCharacteristics") 
-    executeFetchAll(query)
+    executeFetchAll(query, [])
 
 #get profile Values
 def getRealValuesByProfile(profileId):
     query =  ("""Select * from RealValues
                 Where ProfileId = %s""")
 
-    executeFetchAll(query)
+    executeFetchAll(query, [profileId])
 
 def getRealDesiredByProfile(profileId):
     query =  ("""Select * from DesiredValues
                 Where ProfileId = %s""")
 
-    executeFetchAll(query)
+    executeFetchAll(query, [profileId])
 
 #experiences
 def getAllExperiences():
-    query = ("Select * from Profile")
-    executeFetchAll(query)
+    query = ("Select * from Experiences")
+    executeFetchAll(query, [])
 
 def getExperienceByProfileId(profileId):
-    query = ("Select * from Profile")
-    executeFetchAll(query)
+    query = ("""Select * from Experiences
+                Where ProfileId = %s""")
+    executeFetchOne(query, [profileId])
 
-cnx.close()
+getProfileById(3)
+
+getExperienceByProfileId(10)

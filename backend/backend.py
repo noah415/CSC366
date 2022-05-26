@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
 from flask_cors import CORS
+import json
 from models import sqlSelect
 from models import jsonToSQL
 
@@ -28,7 +29,7 @@ def insert():
 def get_matches():
     profileId = request.args.get("profileId", default = 0, type = int)
     profiles = sqlSelect.getRealValuesByProfile(profileId)
-    return str(profiles)
+    return profiles
 
 if __name__ == "__main__":
     app.run("localhost", 5000)
