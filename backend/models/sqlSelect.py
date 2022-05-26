@@ -59,5 +59,4 @@ def getExperienceByProfileId(profileId):
     query = ("Select * from Profile")
     executeFetchAll(query)
 
-
 cnx.close()
