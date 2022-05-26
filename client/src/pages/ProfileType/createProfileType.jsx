@@ -5,9 +5,8 @@ import data from "./profileType";
 import "./createProfileType.css";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { IconButton } from "@material-ui/core";
-import AddIcon from "@mui/icons-material/Add";
-import { useNavigate, Link } from "react-router-dom";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+//import AddIcon from "@mui/icons-material/Add";
+//import { useNavigate, Link } from "react-router-dom";
 
 const ProfileTypePage = () => {
   const [selectedTypes, setSelectedTypes] = useState([]);
@@ -92,7 +91,7 @@ const ProfileTypePage = () => {
           style={{ color: "black" }}
           onClick={() => handlePlus(option)}
         >
-          <AddIcon />
+          {/* <AddIcon /> */}
         </IconButton>
       </div>
     );
@@ -166,9 +165,9 @@ const ProfileTypePage = () => {
         </div>
       </div>
       <div className="bottomButtons">
-        <Link to="/">
-          <Form.Button content="Return to Dashboard" className="button" />
-        </Link>
+        {/* <Link to="/"> */}
+        <Form.Button content="Return to Dashboard" className="button" />
+        {/* </Link> */}
         <Form.Button
           content="Submit"
           className="button"
