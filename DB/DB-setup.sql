@@ -104,7 +104,7 @@ CREATE TABLE JobProfileValues(
    jobId int NOT NULL,
    vcId varchar(40),
    jobProfileValue int,
-   Primary Key(jobId),
+   Primary Key(jobId, vcID),
    Foreign Key(jobId) references ONetJobs(jobId),
    Foreign Key(vcId) references ValueCharacteristics(name)
 );
