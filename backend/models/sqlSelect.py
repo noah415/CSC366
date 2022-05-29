@@ -59,8 +59,8 @@ def getRealValuesByProfile(profileId):
 
     return executeFetchAll(query, [profileId])
 
-def getRealDesiredByProfile(profileId):
-    query =  ("""Select * from DesiredValues
+def getDesiredValuesByProfile(profileId):
+    query =  ("""Select * from DesiredValue
                 Where ProfileId = %s""")
 
     return executeFetchAll(query, [profileId])
