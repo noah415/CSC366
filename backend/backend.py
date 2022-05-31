@@ -22,6 +22,28 @@ def insert():
     if (result == None):
         return result, 500
     else:
+        return json.dumps(result), 200
+
+@app.route("/select", methods = ["GET"])
+def select():
+    table_name = request.args.get("tablename")
+    select_data = request.get_json()
+    result = jsonToSQL.select(table_name, select_data)
+
+    if (result == None):
+        return result, 500
+    else:
+        return json.dumps(result), 200
+
+@app.route("/delete", methods = ["DELETE"])
+def select():
+    table_name = request.args.get("tablename")
+    delete_data = request.get_json()
+    result = jsonToSQL.delete(table_name, delete_data)
+
+    if (result == None):
+        return result, 500
+    else:
         if table_name == 'Profiles':
             insertMatches(table_name)
         return json.dumps(result), 200
