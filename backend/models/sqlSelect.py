@@ -9,12 +9,14 @@ config = {
   'database': 'group4a',
   'raise_on_warnings': True
 }
+
 def openConnection():
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor(dictionary=True, buffered=True)
     return cnx, cursor
 
 def executeFetchAll(query, parameters):
+    cnx, cursor = openConnection()
     cursor.execute(query, parameters)
     result = cursor.fetchall()
     cnx.close()
