@@ -17,23 +17,50 @@ def hello():
 def insert():
     table_name = request.args.get("tablename")
     insert_data = request.get_json()
-    result = jsonToSQL.select(table_name, insert_data)
+    result = jsonToSQL.insert(table_name, insert_data)
 
     if (result == None):
         return result, 500
     else:
         return json.dumps(result), 200
 
+@app.route("/select", methods = ["GET"])
+def select():
+    table_name = request.args.get("tablename")
+    select_data = request.get_json()
+    result = jsonToSQL.select(table_name, select_data)
+
+    if (result == None):
+        return result, 500
+    else:
+        return json.dumps(result), 200
+
+@app.route("/delete", methods = ["DELETE"])
+def select():
+    table_name = request.args.get("tablename")
+    delete_data = request.get_json()
+    result = jsonToSQL.delete(table_name, delete_data)
+
+    if (result == None):
+        return result, 500
+    else:
+        if table_name == 'Profiles':
+            insertMatches(table_name)
+        return json.dumps(result), 200
 
 
-@app.route("/matches")
-def getMatches():
+@app.route("/matches/real")
+def getRealMatches():
     profileId = request.args.get("profileId", default = 0, type = int)
     profileValues = sqlSelect.getRealValuesByProfile(profileId)
     onetValues =  sqlSelect.getAllJobProfileValues()
     onetJobs =  sqlSelect.getAllONETJobs()
-    matches = matching.get_recommendations(profileValues, onetValues, onetJobs)
+    matches = json.dumps(matching.get_recommendations(profileValues, onetValues, onetJobs, 'real'), indent=4, sort_keys=True)
     return matches
+
+@app.route("/valueCharacteristics")
+def getVCs():
+    return json.dumps(sqlSelect.getValueCharacteristics())
 
 if __name__ == "__main__":
     app.run("localhost", 5000)

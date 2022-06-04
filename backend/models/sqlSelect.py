@@ -15,7 +15,6 @@ def openConnection():
     return cnx, cursor
 
 def executeFetchAll(query, parameters):
-    cnx, cursor = openConnection()
     cursor.execute(query, parameters)
     result = cursor.fetchall()
     cnx.close()
@@ -59,8 +58,8 @@ def getRealValuesByProfile(profileId):
 
     return executeFetchAll(query, [profileId])
 
-def getRealDesiredByProfile(profileId):
-    query =  ("""Select * from DesiredValues
+def getDesiredValuesByProfile(profileId):
+    query =  ("""Select * from DesiredValue
                 Where ProfileId = %s""")
 
     return executeFetchAll(query, [profileId])
@@ -73,4 +72,10 @@ def getAllExperiences():
 def getExperienceByProfileId(profileId):
     query = ("""Select * from Experiences
                 Where ProfileId = %s""")
-    return executeFetchOne(query, [profileId])
+    executeFetchOne(query, [profileId])
+
+# getProfileById(3)
+
+# getExperienceByProfileId(10)
+
+getRealValuesByProfile(3)
