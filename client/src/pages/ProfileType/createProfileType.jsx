@@ -97,8 +97,11 @@ const ProfileTypePage = () => {
     );
   };
 
-  const handleChange = (e, { name, value }) =>
+  const handleChange = (e, { name, value }) => {
+    console.log(name);
+    console.log(value);
     setFormData({ ...formData, [name]: value });
+  };
 
   const removeCharacteristic = (charName, listName) => {
     if (listName === "selected") {
@@ -131,8 +134,8 @@ const ProfileTypePage = () => {
   return (
     <>
       <Navbar />
-      <form className="form">
-        <input
+      <Form className="form">
+        <Form.Input
           className="pTitle"
           placeholder="Profile Type Name"
           name="name"
@@ -140,7 +143,7 @@ const ProfileTypePage = () => {
           onChange={handleChange}
           required
         />
-        <input
+        <Form.Input
           placeholder="Description"
           className="pDescription"
           name="description"
@@ -148,7 +151,7 @@ const ProfileTypePage = () => {
           onChange={handleChange}
           required
         />
-      </form>
+      </Form>
       <h className="CPC">Choose Profile Characteristics</h>
       <div className="selectionArea">
         <div className="leftSide">

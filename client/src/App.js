@@ -8,7 +8,7 @@ import ProfileTypePage from "./pages/ProfileType/createProfileType";
 import React, { useState, useEffect } from "react";
 
 function App() {
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState([{ test: "remove" }]);
   return (
     <div className="App">
       <ChakraProvider>
