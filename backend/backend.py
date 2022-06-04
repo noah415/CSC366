@@ -4,7 +4,6 @@ from flask_cors import CORS
 import json
 from models import sqlSelect
 from models import jsonToSQL
-from models import matching
 
 app = Flask(__name__)
 CORS(app)
@@ -35,6 +34,16 @@ def select():
     else:
         return json.dumps(result), 200
 
+@app.route("/selectall", methods = ["GET"])
+def selectAll():
+    table_name = request.args.get("tablename")
+    result = jsonToSQL.selectAll(table_name)
+
+    if (result == None):
+        return result, 500
+    else:
+        return json.dumps(result), 200
+
 @app.route("/delete", methods = ["DELETE"])
 def select():
     table_name = request.args.get("tablename")
@@ -44,9 +53,8 @@ def select():
     if (result == None):
         return result, 500
     else:
-        if table_name == 'Profiles':
-            insertMatches(table_name)
         return json.dumps(result), 200
+
 
 
 @app.route("/matches/real")
