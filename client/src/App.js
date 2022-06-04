@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
+
 import Navbar from "./components/NavBar/navBar";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -7,8 +8,11 @@ import QuestionCard from "./pages/CreateSurvey/questionCard";
 import ProfileTypePage from "./pages/ProfileType/createProfileType";
 import React, { useState, useEffect } from "react";
 
+
 function App() {
   const [questions, setQuestions] = useState([{ test: "remove" }]);
+
+
   return (
     <div className="App">
       <ChakraProvider>

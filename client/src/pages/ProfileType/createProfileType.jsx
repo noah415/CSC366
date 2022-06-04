@@ -3,10 +3,12 @@ import React, { useState, useEffect } from "react";
 import { Form } from "semantic-ui-react";
 import data from "./profileType";
 import "./createProfileType.css";
+import "../../connections/select"
 import DeleteIcon from "@material-ui/icons/Delete";
 import { IconButton } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import { useNavigate, Link } from "react-router-dom";
+import { selectAllCall, selectCall } from "../../connections/select";
 
 const ProfileTypePage = () => {
   const [selectedTypes, setSelectedTypes] = useState([]);
@@ -16,7 +18,7 @@ const ProfileTypePage = () => {
   useEffect(() => {
     //Connect to backend to get all profileType options
     setRemainingTypes(
-      data //.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase())
+      selectAllCall("ValueCharacteristics") //.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase())
     );
   }, []);
 
@@ -48,6 +50,10 @@ const ProfileTypePage = () => {
         {getAddition({ name, description, type })}
       </div>
     );
+  }
+
+  function getValueCharacteristics() {
+    return selectAllCall("ValueCharacteristics");
   }
 
   const postProfileType = () => {

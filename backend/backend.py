@@ -4,6 +4,7 @@ from flask_cors import CORS
 import json
 from models import sqlSelect
 from models import jsonToSQL
+from models import matching
 
 app = Flask(__name__)
 CORS(app)
@@ -17,8 +18,6 @@ def insert():
     table_name = request.args.get("tablename")
     insert_data = request.get_json()
     result = jsonToSQL.insert(table_name, insert_data)
-<<<<<<< HEAD
-=======
 
     if (result == None):
         return result, 500
@@ -37,22 +36,10 @@ def select():
         return json.dumps(result), 200
 
 @app.route("/delete", methods = ["DELETE"])
-def select():
+def delete():
     table_name = request.args.get("tablename")
     delete_data = request.get_json()
     result = jsonToSQL.delete(table_name, delete_data)
->>>>>>> 2481830 (endpoint)
-
-    if (result == None):
-        return result, 500
-    else:
-        return json.dumps(result), 200
-
-@app.route("/select", methods = ["GET"])
-def select():
-    table_name = request.args.get("tablename")
-    select_data = request.get_json()
-    result = jsonToSQL.select(table_name, select_data)
 
     if (result == None):
         return result, 500
@@ -68,18 +55,6 @@ def selectAll():
         return result, 500
     else:
         return json.dumps(result), 200
-
-@app.route("/delete", methods = ["DELETE"])
-def select():
-    table_name = request.args.get("tablename")
-    delete_data = request.get_json()
-    result = jsonToSQL.delete(table_name, delete_data)
-
-    if (result == None):
-        return result, 500
-    else:
-        return json.dumps(result), 200
-
 
 
 @app.route("/matches/real")
