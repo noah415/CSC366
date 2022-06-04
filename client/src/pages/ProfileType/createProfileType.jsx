@@ -18,7 +18,8 @@ const ProfileTypePage = () => {
   useEffect(() => {
     //Connect to backend to get all profileType options
     setRemainingTypes(
-      selectAllCall("ValueCharacteristics") //.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase())
+      // selectAllCall("ValueCharacteristics") //.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase())
+      data
     );
   }, []);
 
