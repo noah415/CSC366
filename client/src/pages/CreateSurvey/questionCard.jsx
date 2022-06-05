@@ -7,25 +7,58 @@ import profileChar from "../ProfileType/profileType";
 import Toggle from "react-toggle";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { IconButton } from "@material-ui/core";
+import ScaleBody from "./ScaleBody";
+import ShortAnswerBody from "./ShortAnswerBody";
+import LongAnswerBody from "./LongAnswerBody";
 
 const QuestionCard = ({ surveyId, qNumber, questions, setQuestions }) => {
   const [cardData, setCardData] = useState({
     sId: surveyId,
     position: qNumber,
     required: false,
+    questionType: "Scale",
   });
-  const handleChange = (e, { name, value }) =>
+
+  const [inserted, setInserted] = useState(false);
+
+  const handleChangeForm = (e, { name, value }) => {
     setCardData({ ...cardData, [name]: value });
+  };
+
+  const getMiddle = () => {
+    if (cardData.questionType === "Scale") {
+      return <ScaleBody />;
+    }
+
+    if (cardData.questionType === "Short Answer") {
+      return <ShortAnswerBody cardData={cardData} setCardData={setCardData} />;
+    }
+
+    if (cardData.questionType === "Long Answer") {
+      return <LongAnswerBody cardData={cardData} setCardData={setCardData} />;
+    }
+  };
+
+  const handleChangeDropQ = (test) =>
+    setCardData({ ...cardData, questionType: test.target.value });
+
+  const handleChangeDropVC = (test) =>
+    setCardData({ ...cardData, valueCharacteristic: test.target.value });
+
+  const handleChangeToggle = (test) => {
+    setCardData({ ...cardData, required: test.target.checked });
+    console.log(cardData);
+  };
 
   useEffect(() => {
-    console.log(cardData);
     console.log(questions);
-    setQuestions(
-      questions.concat([cardData]) //.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase())
-    );
-    setQuestions(
-      questions.splice(questions.length - 2) //.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase())
-    );
+    // questions.splice(questions.length - 1);
+    // setQuestions(
+    //   questions //.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase())
+    // );
+    // setQuestions(
+    //   questions.concat([cardData]) //.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase())
+    // );
   }, [cardData]);
 
   const handleDelete = () => {
@@ -38,7 +71,7 @@ const QuestionCard = ({ surveyId, qNumber, questions, setQuestions }) => {
         className="qTypeDrop"
         name="questionType"
         value={cardData.questionType}
-        onChange={handleChange}
+        onChange={handleChangeDropQ}
       >
         {options.map((o) => (
           <option key={o} value={o}>
@@ -54,9 +87,9 @@ const QuestionCard = ({ surveyId, qNumber, questions, setQuestions }) => {
     return (
       <select
         className="qTypeDrop"
-        name="valueCharachteristic"
-        value={cardData.valueCharachteristic}
-        onChange={handleChange}
+        name="valueCharacteristic"
+        value={cardData.valueCharacteristic}
+        onChange={handleChangeDropVC}
       >
         {options.map((o) => (
           <option key={o} value={o}>
@@ -71,42 +104,25 @@ const QuestionCard = ({ surveyId, qNumber, questions, setQuestions }) => {
   const profileTypeOptions = ["No Characteristic Selected"].concat(
     profileChar.map((a) => a.name)
   );
-  const scaleValues = [
-    "0. No Answer",
-    "1: Strongly Disagree",
-    "2: Disagree",
-    "3: Somewhat Disagree",
-    "4: Neither Agree nor Disagree",
-    "5: Somewhat Agree",
-    "6: Agree",
-    "7: Strongly Agree",
-  ];
 
   return (
     <>
       <Navbar />
       <div className="card">
         <div className="topRow">
-          <form>
-            <input
+          <Form>
+            <Form.Input
               className="prompt"
               placeholder="Question"
-              name="promt"
+              name="prompt"
               value={cardData.prompt}
-              onChange={handleChange}
+              onChange={handleChangeForm}
               required
             />
-          </form>
+          </Form>
           {DropdownQ(questionOptions)}
         </div>
-        <div className="middle">
-          <h1 className="ResponseOptions">Scale Response Options</h1>
-          <div className="scaleValues">
-            {scaleValues.map((value) => {
-              return <h2 className="scaleOption">{value}</h2>;
-            })}
-          </div>
-        </div>
+        <div className="middle">{getMiddle()}</div>
         <div className="bottomRow">
           <div className="profileOptions">{DropdownVC(profileTypeOptions)}</div>
           <label className="toggleArea">
@@ -115,7 +131,7 @@ const QuestionCard = ({ surveyId, qNumber, questions, setQuestions }) => {
               icons={false}
               className="toggle"
               defaultChecked={false}
-              onChange={handleChange}
+              onChange={handleChangeToggle}
             />
           </label>
           <IconButton

@@ -10,9 +10,11 @@ config = {
   'raise_on_warnings': True
 }
 
-cnx = mysql.connector.connect(**config)
-cursor = cnx.cursor(dictionary=True, buffered=True)
 
+def openConnection():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor(dictionary=True, buffered=True)
+    return cnx, cursor
 
 def readJson(attributes, values, data):
   for key, value in data.items():
@@ -26,13 +28,16 @@ def readJson(attributes, values, data):
       values[i] = str(values[i])
 
 def execute(query):
+  data = None
   try:
+    cnx, cursor = openConnection()
     cursor.execute(query)
+    data = cursor.fetchall()
     cnx.commit()
-    return True
+    cnx.close()
   except:
     print("error executing query:",query)
-    return False
+  return data
 
 
 def insert(table_name, insert_data):
@@ -44,8 +49,6 @@ def insert(table_name, insert_data):
   query = "Insert INTO {} ({}) values({})".format(table_name, ",".join(attributes), ",".join(values))
   print(query)
   return execute(query)
-
-
 
 def delete(table_name, delete_data):
   attributes = []
@@ -60,7 +63,7 @@ def delete(table_name, delete_data):
 
   query = "DELETE FROM {} WHERE {}".format(table_name, " and ".join(conditions))
 
-  return(execute(query))
+  return execute(query)
 
 
 def select(table_name, select_data):
@@ -77,12 +80,16 @@ def select(table_name, select_data):
   query = "SELECT * FROM {} WHERE {}".format(table_name, " and ".join(conditions))
   print(query)
 
-  if(execute(query)):
-    try:
-      data = cursor.fetchall()
-    except:
-      print("Failed to retrieve data")
+  data = execute(query)
   return data
+
+def selectAll(table_name):
+  data = None
+  query = "SELECT * FROM {}".format(table_name)
+
+  data = execute(query)
+  return data
+  
 
 dd = {
   "sId": 4,
