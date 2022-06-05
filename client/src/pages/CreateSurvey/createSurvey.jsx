@@ -9,13 +9,15 @@ import { StylesContext } from "@material-ui/styles";
 
 const CreateSurveyPage = () => {
   const [formData, setFormData] = useState({});
-  const [age, setAge] = useState('');
+  const [profileType, setProfileType] = useState('');
+  const [questions, setQuestions] = useState({
+  });
 
   const handleChange = (e, { name, value }) =>
     setFormData({ ...formData, [name]: value });
 
   const handleAgeChange = (event) =>
-    setAge(event.target.value)
+    setProfileType(event.target.value)
 
   return (
     <>
@@ -44,7 +46,7 @@ const CreateSurveyPage = () => {
   <Select
     labelId="profileType"
     id="profileType"
-    value={age}
+    value={profileType}
     label="Select Profile Type"
     onChange={handleAgeChange}
   >
@@ -52,13 +54,20 @@ const CreateSurveyPage = () => {
     <MenuItem value={'Professional'}>Professional</MenuItem>
   </Select>
 </FormControl>
+      </div>      
+      <div className="bottomButtons">
+        {/* <Link to="/"> */}
+        <Form.Button content="Add Question" className="button" />
       </div>
-<Button variant="outlined">Add Question</Button>
-<div>
- 
-<Button variant="outlined">Save Survey</Button> 
-<Button variant="outlined">Publish Survey</Button> 
-</div>
+<div className="bottomButtons">
+        {/* <Link to="/"> */}
+        <Form.Button content="Publish Survey" className="button" />
+        {/* </Link> */}
+        <Form.Button
+          content="Save Survey"
+          className="button"
+        />
+      </div>
     </>
   );
 };
