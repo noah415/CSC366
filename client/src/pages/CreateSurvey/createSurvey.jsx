@@ -126,8 +126,8 @@ const CreateSurveyPage = () => {
   return (
     <>
       <Navbar />
-      <form className="form">
-        <input
+      <Form className="form">
+        <Form.Input
           className="pTitle"
           placeholder="Survey Title"
           name="name"
@@ -135,7 +135,7 @@ const CreateSurveyPage = () => {
           onChange={handleChange}
           required
         />
-        <input
+        <Form.Input
           placeholder="Description"
           className="pDescription"
           name="description"
@@ -143,7 +143,7 @@ const CreateSurveyPage = () => {
           onChange={handleChange}
           required
         />
-      </form>
+      </Form>
       <div>
         {Dropdown(["Undergraduate Research Experience", "Professional"])}
       </div>
