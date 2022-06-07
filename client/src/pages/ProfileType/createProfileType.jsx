@@ -3,12 +3,13 @@ import React, { useState, useEffect } from "react";
 import { Form } from "semantic-ui-react";
 import data from "./profileType";
 import "./createProfileType.css";
-import "../../connections/select"
+import "../../connections/select";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { IconButton } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import { useNavigate, Link } from "react-router-dom";
 import { selectAllCall, selectCall } from "../../connections/select";
+import axios from "axios";
 
 const ProfileTypePage = () => {
   const [selectedTypes, setSelectedTypes] = useState([]);
@@ -17,10 +18,31 @@ const ProfileTypePage = () => {
 
   useEffect(() => {
     //Connect to backend to get all profileType options
-    setRemainingTypes(
-      // selectAllCall("ValueCharacteristics") //.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase())
-      data
-    );
+    //console.log(selectAllCall("ValueCharacteristics"));
+    axios({
+      method: "GET",
+      url: "/selectall?tablename=" + "ValueCharacteristics",
+    })
+      .then((response) => {
+        console.log("in axios");
+        console.log(response.data);
+        const goodStuff = response.data;
+        setRemainingTypes(goodStuff);
+        //return response.data;
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        }
+      });
+    // selectAllCall("ValueCharacteristics").then((profs) =>
+    //   setRemainingTypes(
+    //     //selectAllCall("ValueCharacteristics") //.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase())
+    //     profs
+    //   )
+    // );
   }, []);
 
   useEffect(() => {

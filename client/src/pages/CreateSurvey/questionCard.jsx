@@ -10,18 +10,49 @@ import { IconButton } from "@material-ui/core";
 import ScaleBody from "./ScaleBody";
 import ShortAnswerBody from "./ShortAnswerBody";
 import LongAnswerBody from "./LongAnswerBody";
+//{ surveyId, qNumber,questions, setQuestions }
 
-const QuestionCard = ({ surveyId, qNumber, questions, setQuestions }) => {
+const QuestionCard = ({ rawQ, questionCardToSurvey, deleteQuestion }) => {
   const [cardData, setCardData] = useState({
-    sId: surveyId,
-    position: qNumber,
-    required: false,
-    questionType: "Scale",
+    ...rawQ,
+    prompt: "Question",
+    valueCharacteristic: "No Characteristic Selected",
   });
 
-  const [inserted, setInserted] = useState(false);
+  const saveQuestion = () => {
+    console.log(cardData);
+    questionCardToSurvey(cardData);
+    // questions.splice(questions.length - 1);
+    // setQuestions(
+    //   questions //.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase())
+    // );
+    // setQuestions(
+    //   questions.concat([raw]) //.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase())
+    // );
+  };
+
+  // const editQuestion = () => {
+  //   setSaved(false);
+  // };
+
+  // const getButton = () => {
+  //   if (!saved) {
+  //     return (
+  //       <button className="saveButton" onClick={saveQuestion}>
+  //         Save
+  //       </button>
+  //     );
+  //   } else {
+  //     return (
+  //       <button className="saveButton" onClick={editQuestion}>
+  //         Edit
+  //       </button>
+  //     );
+  //   }
+  // };
 
   const handleChangeForm = (e, { name, value }) => {
+    //rawQ[name] = value;
     setCardData({ ...cardData, [name]: value });
   };
 
@@ -40,29 +71,25 @@ const QuestionCard = ({ surveyId, qNumber, questions, setQuestions }) => {
   };
 
   const handleChangeDropQ = (test) =>
+    //(rawQ["questionType"] = test.target.value);
     setCardData({ ...cardData, questionType: test.target.value });
 
   const handleChangeDropVC = (test) =>
+    //(rawQ["valueCharacteristic"] = test.target.value);
     setCardData({ ...cardData, valueCharacteristic: test.target.value });
 
   const handleChangeToggle = (test) => {
-    setCardData({ ...cardData, required: test.target.checked });
-    console.log(cardData);
+    //rawQ["required"] = test.target.checked;
+    console.log("Required Value");
+    console.log(test.target.checked);
+    //No required attribute
+    //setCardData({ ...cardData, required: test.target.checked });
   };
 
-  useEffect(() => {
-    console.log(questions);
-    // questions.splice(questions.length - 1);
-    // setQuestions(
-    //   questions //.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase())
-    // );
-    // setQuestions(
-    //   questions.concat([cardData]) //.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase())
-    // );
-  }, [cardData]);
-
   const handleDelete = () => {
-    console.log("Delete Question");
+    console.log("Delete Card Data");
+    console.log(cardData);
+    deleteQuestion(cardData);
   };
 
   const DropdownQ = (options) => {
@@ -107,7 +134,6 @@ const QuestionCard = ({ surveyId, qNumber, questions, setQuestions }) => {
 
   return (
     <>
-      <Navbar />
       <div className="card">
         <div className="topRow">
           <Form>
@@ -121,6 +147,12 @@ const QuestionCard = ({ surveyId, qNumber, questions, setQuestions }) => {
             />
           </Form>
           {DropdownQ(questionOptions)}
+          <IconButton
+            style={{ color: "#5480D4", fontSize: "2.5em" }}
+            onClick={() => handleDelete()}
+          >
+            <DeleteIcon style={{ fontSize: ".75em" }} />
+          </IconButton>
         </div>
         <div className="middle">{getMiddle()}</div>
         <div className="bottomRow">
@@ -134,12 +166,9 @@ const QuestionCard = ({ surveyId, qNumber, questions, setQuestions }) => {
               onChange={handleChangeToggle}
             />
           </label>
-          <IconButton
-            style={{ color: "#5480D4", paddingTop: "7%", fontSize: "3em" }}
-            onClick={() => handleDelete()}
-          >
-            <DeleteIcon style={{ fontSize: ".75em" }} />
-          </IconButton>
+          <button className="saveButton" onClick={saveQuestion}>
+            Save
+          </button>
         </div>
       </div>
     </>
