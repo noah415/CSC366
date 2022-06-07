@@ -3,14 +3,12 @@ import React, { useState, useEffect } from "react";
 import { Form } from "semantic-ui-react";
 import data from "./profileType";
 import "./createProfileType.css";
-import "../../connections/select";
-import "../../connections/APIcalls";
+import "../../connections/select"
 import DeleteIcon from "@material-ui/icons/Delete";
 import { IconButton } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import { useNavigate, Link } from "react-router-dom";
 import { selectAllCall, selectCall } from "../../connections/select";
-import axios from "axios";
 
 const ProfileTypePage = () => {
   const [selectedTypes, setSelectedTypes] = useState([]);
