@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import { StylesContext } from "@material-ui/styles";
 import QuestionCard from "./questionCard";
+import "./createSurvey.css";
 //import AddIcon from "@mui/icons-material/Add";
 //import { useNavigate, Link } from "react-router-dom";
 
@@ -126,7 +127,7 @@ const CreateSurveyPage = () => {
   return (
     <>
       <Navbar />
-      <Form className="form">
+      <Form className="surveyForm">
         <Form.Input
           className="pTitle"
           placeholder="Survey Title"
@@ -144,17 +145,15 @@ const CreateSurveyPage = () => {
           required
         />
       </Form>
-      <div>
-        {Dropdown(["Undergraduate Research Experience", "Professional"])}
-      </div>
-      <div className="questions">{getQuestions()}</div>
-      <div className="bottomButtons">
-        {/* <Link to="/"> */}
-        <Form.Button
-          content="Add Question"
-          className="button"
-          onClick={addQuestion}
-        />
+      <div className="qArea">
+        <div>
+          {Dropdown(["Undergraduate Research Experience", "Professional"])}
+        </div>
+        <div className="questions">{getQuestions()}</div>
+        <div className="bottomButtons">
+          {/* <Link to="/"> */}
+          <Form.Button content="Add Question" onClick={addQuestion} />
+        </div>
       </div>
       <div className="bottomButtons">
         {/* <Link to="/"> */}
