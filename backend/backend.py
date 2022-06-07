@@ -18,12 +18,13 @@ def hello():
 def insert():
     table_name = request.args.get("tablename")
     insert_data = request.get_json()
+    print("insert_data", insert_data)
     result = jsonToSQL.insert(table_name, insert_data)
-
+    
     if (result == None):
-        return 500
+        return json.dumps("Error"), 500
     else:
-        return 200
+        return json.dumps("Success"), 200
 
 @app.route("/select", methods = ["POST"])
 def select():
@@ -45,9 +46,9 @@ def delete():
     result = jsonToSQL.delete(table_name, delete_data)
 
     if (result == None):
-        return 500
+        return json.dumps("Error"), 500
     else:
-        return 200
+        return json.dumps("Success"), 200
 
 @app.route("/selectall", methods = ["GET"])
 def selectAll():
