@@ -4,6 +4,7 @@ import { Form } from "semantic-ui-react";
 import data from "./profileType";
 import "./createProfileType.css";
 import "../../connections/select";
+import "../../connections/APIcalls";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { IconButton } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";

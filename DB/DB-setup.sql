@@ -160,3 +160,17 @@ CREATE TABLE TextResponses(
    FOREIGN KEY(eId) REFERENCES Experiences(id),
    FOREIGN KEY(sId, questionPosition) REFERENCES Questions(sId, position)
 );
+
+CREATE TABLE ProfileTypes (
+   name varchar (50),
+   description varchar (256),
+   PRIMARY KEY (name)
+);
+
+CREATE TABLE ProfileValueCharConnections (
+   namePT varchar (50),
+   nameVC varchar (40),
+   PRIMARY KEY (namePT, nameVC),
+   FOREIGN KEY (namePT) REFERENCES ProfileTypes (name),
+   FOREIGN KEY (nameVC) REFERENCES ValueCharacteristics(name)
+);

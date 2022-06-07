@@ -91,7 +91,3 @@ def selectAll(table_name):
   return data
   
 
-dd = {
-  "sId": 4,
-  "Age": "pink"
-}
