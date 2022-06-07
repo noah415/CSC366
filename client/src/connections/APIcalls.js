@@ -48,7 +48,7 @@ export function insertCall(table_name, values_to_insert){
     }
   })}
 
-export function insertCall(table_name, delete_clause){
+export function deleteCall(table_name, delete_clause){
   axios({
     method: "DELETE",
     url: "/delete?tablename=" + table_name,
