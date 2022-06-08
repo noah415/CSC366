@@ -9,28 +9,38 @@ import { IconButton } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import { useNavigate, Link } from "react-router-dom";
 import { selectAllCall, selectCall } from "../../connections/select";
+import axios from "axios"
 
 const ProfileTypePage = () => {
-  const [selectedTypes] = useState([]);
-  const [remainingTypes, setRemainingTypes] = useState([]);
+  const [surveys, setSurveys] = useState([]);
+
+
 
   useEffect(() => {
-    //Connect to backend to get all survets
-    setRemainingTypes(
-      //selectAllCall("Surveys")
-      //.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase())
-      data
-    );
-  }, []);
-
-  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "/selectall?tablename=" + "Surveys",
+    })
+      .then((response) => {
+        console.log("in axios");
+        console.log(response.data);
+        setSurveys(response.data);
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        }
+      })
     //Handles rerender on selection switch
-  }, [selectedTypes, remainingTypes]);
+  }, [surveys]);
 
-  function SurveyCard({ name, description }) {
+  function SurveyCard({ name, description, type }) {
     return (
       <div className="cardOption">
         <h className="cardTitle">{name}</h>
+        <h className="cardDescription">{type}</h>
         <h className="cardDescription">{description}</h>
         <Form.Button content="Edit/Preview Survey" />
       </div>
@@ -43,7 +53,7 @@ const ProfileTypePage = () => {
       <h className="CPC"></h>
       <h className="CPC">All Saved Surveys</h>
       <div className="surveyArea">
-        {remainingTypes.map((profile) => (
+        {surveys.map((profile) => (
           <SurveyCard {...profile} key={profile.name} />
         ))}
       </div>
