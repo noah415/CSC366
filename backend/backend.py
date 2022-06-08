@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Flask
 from flask import request
 from flask_cors import CORS
@@ -17,18 +18,21 @@ def hello():
 def insert():
     table_name = request.args.get("tablename")
     insert_data = request.get_json()
+    print("insert_data", insert_data)
     result = jsonToSQL.insert(table_name, insert_data)
-
+    
     if (result == None):
-        return result, 500
+        return json.dumps("Error"), 500
     else:
-        return json.dumps(result), 200
+        return json.dumps("Success"), 200
 
-@app.route("/select", methods = ["GET"])
+@app.route("/select", methods = ["POST"])
 def select():
     table_name = request.args.get("tablename")
     select_data = request.get_json()
+    print(select_data)
     result = jsonToSQL.select(table_name, select_data)
+    print(result)
 
     if (result == None):
         return result, 500
@@ -42,9 +46,9 @@ def delete():
     result = jsonToSQL.delete(table_name, delete_data)
 
     if (result == None):
-        return result, 500
+        return json.dumps("Error"), 500
     else:
-        return json.dumps(result), 200
+        return json.dumps("Success"), 200
 
 @app.route("/selectall", methods = ["GET"])
 def selectAll():
@@ -57,7 +61,7 @@ def selectAll():
         return json.dumps(result), 200
 
 
-@app.route("/matches/real")
+@app.route("/matches/real", methods = ["GET"])
 def getRealMatches():
     profileId = request.args.get("profileId", default = 0, type = int)
     profileValues = sqlSelect.getRealValuesByProfile(profileId)

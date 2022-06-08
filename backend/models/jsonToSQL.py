@@ -27,7 +27,7 @@ def readJson(attributes, values, data):
     elif isinstance(values[i], int) or isinstance(values[i], float):
       values[i] = str(values[i])
 
-def execute(query):
+def executeSelect(query):
   data = None
   try:
     cnx, cursor = openConnection()
@@ -35,9 +35,22 @@ def execute(query):
     data = cursor.fetchall()
     cnx.commit()
     cnx.close()
-  except:
+  except(mysql.connector.Error) as err:
+    print("Error:", err)
     print("error executing query:",query)
   return data
+
+def executeNoReturn(query):
+  try:
+    cnx, cursor = openConnection()
+    cursor.execute(query)
+    cnx.commit()
+    cnx.close()
+    return "Success"
+  except(mysql.connector.Error) as err:
+    print("Error:", err)
+    print("error executing query:",query)
+    return None
 
 
 def insert(table_name, insert_data):
@@ -48,7 +61,7 @@ def insert(table_name, insert_data):
 
   query = "Insert INTO {} ({}) values({})".format(table_name, ",".join(attributes), ",".join(values))
   print(query)
-  return execute(query)
+  return executeNoReturn(query)
 
 def delete(table_name, delete_data):
   attributes = []
@@ -63,7 +76,7 @@ def delete(table_name, delete_data):
 
   query = "DELETE FROM {} WHERE {}".format(table_name, " and ".join(conditions))
 
-  return execute(query)
+  return executeNoReturn(query)
 
 
 def select(table_name, select_data):
@@ -80,18 +93,14 @@ def select(table_name, select_data):
   query = "SELECT * FROM {} WHERE {}".format(table_name, " and ".join(conditions))
   print(query)
 
-  data = execute(query)
+  data = executeSelect(query)
   return data
 
 def selectAll(table_name):
   data = None
   query = "SELECT * FROM {}".format(table_name)
 
-  data = execute(query)
+  data = executeSelect(query)
   return data
-  
 
-dd = {
-  "sId": 4,
-  "Age": "pink"
-}
+

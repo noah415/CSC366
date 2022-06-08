@@ -9,17 +9,9 @@ const LongAnswerBody = ({ cardData, setCardData }) => {
   return (
     <>
       <div className="middle">
-        <Form>
-          <Form.Input
-            className="prompt"
-            placeholder="Long Answer Here"
-            name="answer"
-            value={cardData.LongAnswer}
-            onChange={handleChange}
-            style={{ height: "100px" }}
-            required
-          />
-        </Form>
+        <div className="middle">
+          <p style={{ height: "100px" }}>Long Answer Here</p>
+        </div>
       </div>
     </>
   );

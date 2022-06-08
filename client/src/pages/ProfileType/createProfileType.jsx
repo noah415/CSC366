@@ -2,6 +2,7 @@ import Navbar from "../../components/NavBar/navBar";
 import React, { useState, useEffect } from "react";
 import { Form } from "semantic-ui-react";
 import data from "./profileType";
+import axios from "axios";
 import "./createProfileType.css";
 import "../../connections/select"
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -17,10 +18,25 @@ const ProfileTypePage = () => {
 
   useEffect(() => {
     //Connect to backend to get all profileType options
-    setRemainingTypes(
-      // selectAllCall("ValueCharacteristics") //.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase())
-      data
-    );
+    //console.log(selectAllCall("ValueCharacteristics"));
+    axios({
+      method: "GET",
+      url: "/selectall?tablename=" + "ValueCharacteristics",
+    })
+      .then((response) => {
+        console.log("in axios");
+        console.log(response.data);
+        const goodStuff = response.data;
+        setRemainingTypes(goodStuff);
+        //return response.data;
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        }
+      });
   }, []);
 
   useEffect(() => {
@@ -57,11 +73,20 @@ const ProfileTypePage = () => {
     return selectAllCall("ValueCharacteristics");
   }
 
-  const postProfileType = () => {
+  const postProfileType = async () => {
     //insert form Data into  sql attributes name and description where name is primary key
     // Note THIS INSERT MUST HAPPEN BEFORE THE FOLLOWING
     console.log(formData);
+    await axios.post("/insert?tablename=ProfileTypes", formData);
     console.log(selectedTypes);
+    let currentType = {}
+    for (let i = 0; i < selectedTypes.length; i++){
+      currentType = {
+        namePT: formData["name"],
+        nameVC: selectedTypes[i]["name"],
+      }
+      await axios.post("/insert?tablename=ProfileValueCharConnections", currentType);
+    }
 
     //for each selected type add to the ProfileValueConntections table the name of the profileType and the name of the profile characterisitc as foreign keys
     //navigate("/");

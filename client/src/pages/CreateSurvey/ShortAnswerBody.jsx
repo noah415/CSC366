@@ -2,23 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./questionCard.css";
 import { Form } from "semantic-ui-react";
 
-const ShortAnswerBody = ({ cardData, setCardData }) => {
-  const handleChange = (e, { name, value }) =>
-    setCardData({ ...cardData, [name]: value });
-
+const ShortAnswerBody = () => {
   return (
     <>
       <div className="middle">
-        <Form>
-          <Form.Input
-            className="prompt"
-            placeholder="Short Answer Here"
-            name="answer"
-            value={cardData.shortAnswer}
-            onChange={handleChange}
-            required
-          />
-        </Form>
+        <p>Short Answer Here</p>
       </div>
     </>
   );
