@@ -157,17 +157,9 @@ const CreateSurveyPage = () => {
       </div>
       <div className="bottomButtons">
         {/* <Link to="/"> */}
-        <Form.Button
-          content="Publish Survey"
-          className="button"
-          onClick={publishSurvey}
-        />
+        <Form.Button content="Publish Survey" onClick={publishSurvey} />
         {/* </Link> */}
-        <Form.Button
-          content="Save Survey"
-          className="button"
-          onClick={saveSurvey}
-        />
+        <Form.Button content="Save Survey" onClick={saveSurvey} />
       </div>
     </>
   );

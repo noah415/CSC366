@@ -32,7 +32,7 @@ const ProfileTypePage = () => {
       <div className="cardOption">
         <h className="cardTitle">{name}</h>
         <h className="cardDescription">{description}</h>
-        <Form.Button content="Edit/Preview Survey" className="button" />
+        <Form.Button content="Edit/Preview Survey" />
       </div>
     );
   }
@@ -49,7 +49,7 @@ const ProfileTypePage = () => {
       </div>
       <div className="bottomButtons">
         {/* <Link to="/"> */}
-        <Form.Button content="Return to Dashboard" className="button" />
+        <Form.Button content="Return to Dashboard" />
       </div>
     </>
   );
