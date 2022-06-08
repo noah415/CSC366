@@ -34,13 +34,16 @@ const ProfileTypePage = () => {
     //Handles rerender on selection switch
   }, []);
 
-  function SurveyCard({ name, description, type }) {
+  function SurveyCard({ name, description, type, id }) {
     return (
       <div className="cardOption">
         <h className="cardTitle">{name}</h>
         <h className="cardDescription">{type}</h>
         <h className="cardDescription">{description}</h>
-        <Form.Button content="Edit/Preview Survey" />
+          <Form.Button content="Edit/Preview Survey" onClick={(e) => {
+        e.preventDefault();
+        window.location.href='/editSurvey/'+id;
+        }}/>
       </div>
     );
   }

@@ -14,12 +14,12 @@ import {
 import { StylesContext } from "@material-ui/styles";
 import QuestionCard from "./questionCard";
 import "./editSurvey.css";
-//import AddIcon from "@mui/icons-material/Add";
-//import { useNavigate, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const EditSurveyPage = (SurveyID) => {
+const EditSurveyPage = () => {
   const [formData, setFormData] = useState([]);
   const [questions, setQuestions] = useState([]);
+  const { sid } = useParams();
 
   const questionCardToSurvey = (newQuestion) => {
     var newQuestions = questions;
@@ -50,7 +50,6 @@ const EditSurveyPage = (SurveyID) => {
     })
       .then((response) => {
         console.log("in axios");
-        console.log(response.data);
         setFormData(response.data);
       })
       .catch((error) => {
@@ -63,11 +62,10 @@ const EditSurveyPage = (SurveyID) => {
     axios({
       method: "POST",
       url: "/select?tablename=" + "Questions",
-      data: { sId: 1 },
+      data: { sId: sid },
     })
       .then((response) => {
         console.log("in axios");
-        console.log(response.data);
         setQuestions(response.data);
       })
       .catch((error) => {

@@ -30,7 +30,7 @@ function App() {
             <Route path="/results" element={<Navbar />} />
             <Route path="/account" element={<Navbar />} />
             <Route path="/createSurvey" element={<CreateSurvey />} />
-            <Route path="/editSurvey" element={<EditSurvey />} />
+            <Route path="/editSurvey/:sid" element={<EditSurvey />} />
             <Route path="/createProfileType" element={<ProfileTypePage />} />
             <Route path="*" element={<p>404</p>} />
           </Routes>
