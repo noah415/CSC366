@@ -1,0 +1,107 @@
+.bottomButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 5%;
+}
+
+.button {
+  background-color: #5480d4;
+  width: 30vh;
+  height: 15vh;
+  font-size: large;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.212);
+  transform-origin: top;
+  transition: box-shadow 0.7s, transform 0.7s;
+  border-radius: 25px;
+  margin: 2%;
+  margin-left: 10%;
+  padding: 1%;
+}
+
+.addbutton {
+  background-color: #797b7d;
+  width: 30vh;
+  height: 7vh;
+  font-size: large;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.212);
+  transform-origin: top;
+  transition: box-shadow 0.7s, transform 0.7s;
+  border-radius: 25px;
+  margin: 2%;
+  margin-left: 10%;
+  padding: 1%; 
+}
+
+.cardInfoSelected {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+.Title {
+  border-bottom: 1px solid black;
+  display: flex;
+  font-size: larger;
+  font-weight: 600;
+  justify-content: flex-start;
+  padding: 1%;
+}
+.Title2 {
+  display: flex;
+  font-size: 25px;
+  font-weight: 600;
+  justify-content: flex-start;
+  padding: 5%;
+}
+.cardTitle {
+  display: flex;
+  font-size: larger;
+  font-weight: 600;
+  justify-content: flex-start;
+  padding: 1%;
+}
+
+.cardType {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.cardDescription {
+  text-align: left;
+}
+
+.bottomButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 5%;
+}
+
+.profilebutton {
+  background-color: #5480d4;
+  width: 30vh;
+  height: 30vh;
+  font-size: large;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.212);
+  transform-origin: top;
+  transition: box-shadow 0.7s, transform 0.7s;
+  border-radius: 25px;
+  margin: 2%;
+  margin-left: 10%;
+  padding: 1%; 
+}
+
+.newTitle {
+  font-size: 40px;
+}
+
+.newTitle2 {
+  font-size: 30px;
+  border-bottom: 1px solid black;
+}

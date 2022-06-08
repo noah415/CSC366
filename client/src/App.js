@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProfileTypePage from "./pages/ProfileType/createProfileType";
 import React, { useState, useEffect } from "react";
 import CreateSurvey from "./pages/CreateSurvey/createSurvey";
+import DashBoardPage from "./pages/Dashboard/dashboard";
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
         <Router>
           <Routes>
             {/* CHANGE ELEMENT AS IMPLEMENTED */}
-            <Route exact path="/" element={<Navbar />} />
+            <Route exact path="/" element={<DashBoardPage />} />
             <Route exact path="/surveys" element={<Navbar />} />
             <Route path="/profiles" element={<Navbar />} />
             <Route path="/users" element={<Navbar />} />
