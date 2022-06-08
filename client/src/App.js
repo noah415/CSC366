@@ -9,6 +9,7 @@ import CreateSurvey from "./pages/CreateSurvey/createSurvey";
 import DashBoardPage from "./pages/Dashboard/dashboard";
 import ProfileTypePage from "./pages/ProfileType/createProfileType";
 import AllSurveys from "./pages/AllSurveys/allSurveys";
+import EditSurvey from "./pages/EditSurvey/editSurvey";
 
 
 function App() {
@@ -28,9 +29,8 @@ function App() {
             <Route path="/login" element={<Navbar />} />
             <Route path="/results" element={<Navbar />} />
             <Route path="/account" element={<Navbar />} />
-            <Route
-              path="/createSurvey" element={<CreateSurvey />}
-            />
+            <Route path="/createSurvey" element={<CreateSurvey />} />
+            <Route path="/editSurvey" element={<EditSurvey />} />
             <Route path="/createProfileType" element={<ProfileTypePage />} />
             <Route path="*" element={<p>404</p>} />
           </Routes>

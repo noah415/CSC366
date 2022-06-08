@@ -12,11 +12,12 @@ import ShortAnswerBody from "./ShortAnswerBody";
 import LongAnswerBody from "./LongAnswerBody";
 //{ surveyId, qNumber,questions, setQuestions }
 
-const QuestionCard = ({ rawQ, questionCardToSurvey, deleteQuestion }) => {
+const QuestionCard = ({ rawQ, questionCardToSurvey, deleteQuestion, prompt, questionType, valueCharachteristic }) => {
   const [cardData, setCardData] = useState({
     ...rawQ,
-    prompt: "Question",
-    valueCharacteristic: "General",
+    prompt: prompt,
+    questionType: questionType,
+    valueCharacteristic: valueCharachteristic,
   });
 
   const saveQuestion = () => {
@@ -127,8 +128,9 @@ const QuestionCard = ({ rawQ, questionCardToSurvey, deleteQuestion }) => {
     );
   };
 
-  const questionOptions = ["Scale", "Short Answer", "Long Answer"];
-  const profileTypeOptions = ["General"].concat(
+  const cond = (questionType == 0);
+  const questionOptions = [].concat(cond ? ["Long Answer", "Short Answer", "Scale"] : ["Scale", "Short Answer", "Long Answer"]);
+  const profileTypeOptions = [valueCharachteristic].concat(
     profileChar.map((a) => a.name)
   );
 
@@ -174,5 +176,7 @@ const QuestionCard = ({ rawQ, questionCardToSurvey, deleteQuestion }) => {
     </>
   );
 };
+
+
 
 export default QuestionCard;

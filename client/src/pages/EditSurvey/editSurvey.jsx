@@ -17,12 +17,8 @@ import "./editSurvey.css";
 //import AddIcon from "@mui/icons-material/Add";
 //import { useNavigate, Link } from "react-router-dom";
 
-const EditSurveyPage = () => {
-  const [formData, setFormData] = useState({
-    description: "Survey Description",
-    name: "Survey Title",
-    type: "Undergraduate Research Experience",
-  });
+const EditSurveyPage = (SurveyID) => {
+  const [formData, setFormData] = useState([]);
   const [questions, setQuestions] = useState([]);
 
   const questionCardToSurvey = (newQuestion) => {
@@ -47,7 +43,41 @@ const EditSurveyPage = () => {
   };
 
   useEffect(() => {
-    
+    axios({
+      method: "POST",
+      url: "/select?tablename=" + "Surveys",
+      data: { id: 1 },
+    })
+      .then((response) => {
+        console.log("in axios");
+        console.log(response.data);
+        setFormData(response.data);
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        }
+      });
+    axios({
+      method: "POST",
+      url: "/select?tablename=" + "Questions",
+      data: { sId: 1 },
+    })
+      .then((response) => {
+        console.log("in axios");
+        console.log(response.data);
+        setQuestions(response.data);
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        }
+      });
+    //Handles rerender on selection switch
   }, []);
 
   const publishSurvey = async (e) => {
@@ -58,21 +88,21 @@ const EditSurveyPage = () => {
     //need to get the auto incremented id from mySQL to post questions
     let surveyClause = {
       name: formData["name"],
-      description: formData["description"]
+      description: formData["description"],
     };
     const survey = await axios.post("/select?tablename=Surveys", surveyClause);
     const surveyId = survey.data[0]["id"];
     console.log(survey);
 
-    let questionData = {}
-    for (let i = 0; i < questions.length; i++){
+    let questionData = {};
+    for (let i = 0; i < questions.length; i++) {
       questionData = {
         sId: surveyId,
         position: i,
         prompt: "demo spot",
         questionType: questions[i]["questionType"],
-        valueCharachteristic: "General"
-      }
+        valueCharachteristic: "General",
+      };
       await axios.post("/insert?tablename=Questions", questionData);
     }
   };
@@ -99,15 +129,7 @@ const EditSurveyPage = () => {
     return (
       <>
         {questions.map((question) => (
-          <QuestionCard
-            rawQ={question}
-            questionCardToSurvey={questionCardToSurvey}
-            deleteQuestion={delelteQ}
-            //surveyId={formData.name}
-            //qNumber={questions.length + 1}
-            //questions={questions}
-            //setQuestions={setQuestions}
-          />
+          <QuestionCard {...question} key={question.prompt} />
         ))}
       </>
     );
