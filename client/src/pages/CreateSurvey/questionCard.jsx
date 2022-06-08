@@ -16,7 +16,7 @@ const QuestionCard = ({ rawQ, questionCardToSurvey, deleteQuestion }) => {
   const [cardData, setCardData] = useState({
     ...rawQ,
     prompt: "Question",
-    valueCharacteristic: "No Characteristic Selected",
+    valueCharacteristic: "General",
   });
 
   const saveQuestion = () => {
@@ -128,7 +128,7 @@ const QuestionCard = ({ rawQ, questionCardToSurvey, deleteQuestion }) => {
   };
 
   const questionOptions = ["Scale", "Short Answer", "Long Answer"];
-  const profileTypeOptions = ["No Characteristic Selected"].concat(
+  const profileTypeOptions = ["General"].concat(
     profileChar.map((a) => a.name)
   );
 

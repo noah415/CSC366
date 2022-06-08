@@ -1,6 +1,7 @@
 import Navbar from "../../components/NavBar/navBar";
 import React, { useState, useEffect } from "react";
 import { Form } from "semantic-ui-react";
+import axios from "axios";
 import DeleteIcon from "@material-ui/icons/Delete";
 import {
   IconButton,
@@ -18,9 +19,8 @@ import "./createSurvey.css";
 
 const CreateSurveyPage = () => {
   const [formData, setFormData] = useState({
-    id: Math.floor(Math.random()),
-    name: "Survey Title",
     description: "Survey Description",
+    name: "Survey Title",
     type: "Undergraduate Research Experience",
   });
   const [questions, setQuestions] = useState([]);
@@ -57,10 +57,31 @@ const CreateSurveyPage = () => {
     // );
   }, [questions]);
 
-  const publishSurvey = (e) => {
+  const publishSurvey = async (e) => {
     console.log("Publish Survey Data");
     console.log(formData);
     console.log(questions);
+    await axios.post("/insert?tablename=Surveys", formData);
+    //need to get the auto incremented id from mySQL to post questions
+    let surveyClause = {
+      name: formData["name"],
+      description: formData["description"]
+    };
+    const survey = await axios.post("/select?tablename=Surveys", surveyClause);
+    const surveyId = survey.data[0]["id"];
+    console.log(survey);
+
+    let questionData = {}
+    for (let i = 0; i < questions.length; i++){
+      questionData = {
+        sId: surveyId,
+        position: i,
+        prompt: "demo spot",
+        questionType: questions[i]["questionType"],
+        valueCharachteristic: "General"
+      }
+      await axios.post("/insert?tablename=Questions", questionData);
+    }
   };
 
   const saveSurvey = (e) => {
@@ -72,7 +93,6 @@ const CreateSurveyPage = () => {
   const addQuestion = (e) => {
     console.log(questions);
     const newQ = {
-      sId: formData.sId,
       position: questions.length + 1,
       questionType: "Scale",
       //questions: questions,

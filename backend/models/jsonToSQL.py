@@ -91,7 +91,6 @@ def select(table_name, select_data):
     conditions.append(condition)
 
   query = "SELECT * FROM {} WHERE {}".format(table_name, " and ".join(conditions))
-  print(query)
 
   data = executeSelect(query)
   return data
@@ -102,5 +101,3 @@ def selectAll(table_name):
 
   data = executeSelect(query)
   return data
-
-
