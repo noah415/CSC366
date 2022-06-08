@@ -14,8 +14,6 @@ import axios from "axios"
 const ProfileTypePage = () => {
   const [surveys, setSurveys] = useState([]);
 
-
-
   useEffect(() => {
     axios({
       method: "GET",
@@ -34,7 +32,7 @@ const ProfileTypePage = () => {
         }
       })
     //Handles rerender on selection switch
-  }, [surveys]);
+  }, []);
 
   function SurveyCard({ name, description, type }) {
     return (
