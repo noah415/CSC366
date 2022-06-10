@@ -18,6 +18,7 @@ Frontend:
 > Navigate to localhost:3000 on your browser. <br/>
   
 Backend:
+> source ./venv/bin/activate  - opens virtual environment <br/>
 > Run "python3 backend.py" in the Backend Directory. <br/>
 > Must be connected to CalPoly servers for connection to the database. <br/>
 
