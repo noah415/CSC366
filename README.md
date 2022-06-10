@@ -1,8 +1,8 @@
-# CSC366
+# CSC 366
 
 Baseline web application for Admin functionality of the ONET Job Matching service.
 
-Created for CSC366, Cal Poly, 2022
+Created for CSC 366, Cal Poly, 2022
 Nick Hausman
 Nick Herzig
 Noah Otsuka
@@ -13,10 +13,10 @@ Built on a React front end with a flask backend which connects to a mySQL databa
 
 How to run:
 Frontend:
-  Run NPM Install in the Client Directory
-  Run NPM Start
-  Navigate to localhost:3000 on your browser
+> Run NPM Install in the Client Directory. 
+> Run NPM Start. 
+> Navigate to localhost:3000 on your browser. 
   
 Backend:
-  run "python3 backend.py" in the Backend Directory
-  Must be connected to CalPoly servers for connection to the database
+> Run "python3 backend.py" in the Backend Directory. 
+> Must be connected to CalPoly servers for connection to the database. 
