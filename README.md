@@ -13,10 +13,10 @@ Built on a React front end with a flask backend which connects to a mySQL databa
 
 How to run:
 Frontend:
-> Run NPM Install in the Client Directory. 
-> Run NPM Start. 
-> Navigate to localhost:3000 on your browser. 
+> Run NPM Install in the Client Directory.<br/>
+> Run NPM Start. <br/>
+> Navigate to localhost:3000 on your browser. <br/>
   
 Backend:
-> Run "python3 backend.py" in the Backend Directory. 
-> Must be connected to CalPoly servers for connection to the database. 
+> Run "python3 backend.py" in the Backend Directory. <br/>
+> Must be connected to CalPoly servers for connection to the database. <br/>
