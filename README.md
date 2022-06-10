@@ -3,6 +3,11 @@
 Baseline web application for Admin functionality of the ONET Job Matching service.
 
 Created for CSC366, Cal Poly, 2022
+Nick Hausman
+Nick Herzig
+Noah Otsuka
+McKenna Reed
+
 
 Built on a React front end with a flask backend which connects to a mySQL database.
 
