@@ -20,3 +20,7 @@ Frontend:
 Backend:
 > Run "python3 backend.py" in the Backend Directory. <br/>
 > Must be connected to CalPoly servers for connection to the database. <br/>
+
+
+Current state of the application allows an admin user to create surveys with three different question types, develop new profile types, and view the<br/>
+surveys already created. The database is built with full support to manage a wide array of users completeing multiple surveys.
