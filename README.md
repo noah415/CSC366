@@ -2,7 +2,7 @@
 
 Baseline web application for Admin functionality of the ONET Job Matching service.
 
-Created for CSC 366, Cal Poly, 2022
+Created for CSC 366, Cal Poly, 2022<br/>
 Nick Hausman
 Nick Herzig
 Noah Otsuka
